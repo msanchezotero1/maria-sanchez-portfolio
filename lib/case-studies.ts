@@ -4,12 +4,22 @@ import matter from "gray-matter";
 
 const CASE_STUDIES_DIR = path.join(process.cwd(), "content", "case-studies");
 
+export type CaseStudyMetric = {
+  label: string;
+  value: string;
+};
+
 export type CaseStudyFrontmatter = {
   title: string;
   client: string;
   category: string;
   summary: string;
-  highlights?: string[];
+  // A highlight can be a plain string, or a { label, value } metric pair
+  // (rendered as a small stat block instead of a sentence).
+  highlights?: (string | CaseStudyMetric)[];
+  role?: string;
+  timeframe?: string;
+  tags?: string[];
   order?: number;
 };
 

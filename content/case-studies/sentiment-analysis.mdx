@@ -1,0 +1,77 @@
+---
+title: "What 1,300 Ad Comments Revealed About Creative Performance"
+summary: "Turning a hunch about audience hostility into a quantified creative recommendation"
+client: "Entyre Care"
+category: "Campaign Performance Reporting"
+role: "Growth Marketing"
+timeframe: "2025"
+tags: ["Python", "Sentiment Analysis", "Creative Analytics", "Meta Ads", "Data Cleaning"]
+highlights:
+  - label: "Comments analyzed"
+    value: "~1,335"
+  - label: "Coverage of total comment volume"
+    value: "~80%"
+  - label: "Worst-performing format"
+    value: "Static, 24% negative"
+order: 2
+---
+
+## Context
+
+While managing social for a paid family caregiving platform, I kept noticing the same thing: the comment sections under our paid ads were hostile. Not indifferent, hostile. People were accusing us of running a scam.
+
+"The comments are bad" is not something a marketing team can act on. It is an anecdote, and anecdotes lose arguments against a creative agency with a retainer. So I proposed a sprint to turn it into evidence: quantify comment sentiment across our active ads, then break it down by creative format and message theme to find out whether the hostility was uniform or concentrated.
+
+## The hypothesis
+
+> If negative sentiment is unevenly distributed across creative formats and message themes, we can identify which creative decisions are actively generating distrust and stop repeating them.
+
+The implicit second question was more pointed: is the agency's highest-volume creative style also its worst-performing one?
+
+## The build
+
+**Sampling.** Meta's export tooling would not let me pull comments in bulk, so extraction had to be manual. That made analyzing every active ad impractical, and analyzing an arbitrary handful indefensible.
+
+Instead of guessing, I pulled the full ad performance export, ranked every ad by comment volume, and calculated cumulative coverage. The distribution was steep. A relatively small set of high-volume ads accounted for the large majority of all comments. I extracted comments from the ads representing roughly the top 80% of total comment volume and documented that threshold as the sampling rationale.
+
+This was a coverage-based sample rather than a formal statistical test, which is what the constraint allowed. Stating that plainly was more useful than dressing it up.
+
+**Processing.** I used Python to clean and consolidate the manually extracted comments into a single structured dataset, normalizing formatting and handling duplicates and empty rows.
+
+**Classification.** I ran sentiment classification across the full comment set, then joined each comment back to its parent ad so results could be segmented by:
+
+- **Creative format** (static, video, image, other)
+- **Message theme** (the campaign concept driving the ad, such as outcome-focused storytelling versus specific dollar-figure claims)
+
+I also flagged mentions of recurring objection topics, including eligibility, payment, spousal qualification, and Medicaid, so the team could see not just that people were skeptical but what specifically they were skeptical about.
+
+**Visualization.** I built charts ranking formats, themes, and individual ads by positive rate, negative rate, and net sentiment.
+
+## The result
+
+The hostility was not uniform. It was concentrated, and the pattern was actionable.
+
+**By format:**
+
+| Format | Negative rate | Net sentiment |
+|---|---|---|
+| Static | 24.0% | -0.186 |
+| Video | 17.3% | -0.131 |
+| Image | 16.2% | -0.096 |
+| Other | 8.2% | -0.055 |
+
+Static creative underperformed every other format by a wide margin, drawing negative comments at roughly 1.5x the rate of image and video.
+
+**By message theme**, the spread was even wider. The worst-performing themes drew negative comments at over 25%, while narrative, outcome-oriented themes sat closer to 12%, and specific modest dollar-figure claims performed best at around 10%.
+
+The clearest finding: aggressive, generic, high-claim messaging generated the most distrust, while specific and narrative framing generated the least. Only two ads in the entire set achieved net positive sentiment, and both were video.
+
+**Objection mapping** added a second layer. Eligibility and payment questions appeared in a meaningful share of comments across every theme, which pointed to a funnel problem rather than a creative one. People were not only skeptical, they were confused about whether they qualified.
+
+## What I took from it
+
+**A constraint is not an excuse for an indefensible method.** I could not export comments in bulk. Rather than analyze a convenient subset and hope nobody asked, I made the sampling logic explicit and coverage-based, so the finding could survive scrutiny.
+
+**Sentiment is a leading indicator that most teams ignore.** Comment sentiment was telling us months earlier what CPL trends eventually confirmed. It cost nothing to collect and nobody was reading it systematically.
+
+**The analysis and the fix belong together.** This project quantified the credibility problem. A separate experiment, replacing produced creative with organic content, tested the solution. Diagnosis without a proposed intervention rarely changes anyone's behavior.

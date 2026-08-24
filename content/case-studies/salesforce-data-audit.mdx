@@ -1,0 +1,71 @@
+---
+title: "The Email Campaign That Became a CRM Intervention"
+summary: "Finding out why a Salesforce instance could not answer basic questions, and getting leadership to fix it"
+client: "BenefitScape"
+category: "CRM Data Systems"
+role: "Sales Enablement and CRM Consultant"
+timeframe: "2025"
+tags: ["Salesforce", "Data Governance", "Power BI", "CRM Audit", "Stakeholder Management"]
+highlights:
+  - label: "Fields audited"
+    value: "~20+ across three object levels"
+  - label: "Worst-case field completeness"
+    value: "~10%"
+  - label: "Outcome"
+    value: "Executive-mandated remediation with enforced deadline"
+order: 4
+---
+
+## Context
+
+I was brought in to run a win-back email campaign. The target segment was straightforward on paper: accounts that had contracted with BenefitScape in the previous tax year and had not renewed.
+
+To build that segment I needed to know, per account, when the relationship ended, how long they had been a client, what service they had purchased, and how to reach them. All of that should have lived in Salesforce.
+
+Most of it did not.
+
+## The problem
+
+The first reports I ran came back full of blanks. Not occasional gaps, structural ones. Critical fields were empty at the account level, the contact level, and the opportunity level. In some cases even basic contact information such as email and phone was missing.
+
+At that point I had a choice. I could build the campaign on whatever partial data existed and deliver something technically on-scope, or I could stop and say the underlying asset was not fit for purpose. I stopped.
+
+## The audit
+
+Rather than escalating an impression, I quantified it. I ran a systematic completeness audit measuring the percentage of missing values for every field, across roughly twenty-plus fields, from three different angles:
+
+- **Account level**, to establish overall data health
+- **Opportunity level**, to see whether deal history was reconstructable
+- **Account owner level**, to determine whether the gaps were systemic or concentrated among specific reps
+
+The account owner cut was the important one. It reframed the question from "our data is bad" to "our data is bad in a specific, attributable, fixable pattern."
+
+Several critical fields came back with completeness as low as ~10%. The root cause was not a technical failure or a migration issue. Sales representatives were maintaining their own records in personal spreadsheets and were not entering information into Salesforce, because nobody was tracking whether they did. The organization was paying for a CRM and operating without one.
+
+I visualized the results in Power BI so the pattern was legible at a glance to people who were not going to read a report.
+
+## The intervention
+
+**First attempt: direct remediation.** I proposed meeting with each sales representative individually to walk their accounts and backfill from their own records. I ran several of these sessions. The math did not work. With hundreds of accounts per rep, the approach could not scale, and I said so rather than continuing to burn time on it.
+
+**Second attempt: enforcement.** I presented the audit to the COO, who agreed the campaign could not proceed until the CRM was usable. The CEO and COO then took the Power BI visuals directly to the sales team in a formal meeting and email, with a hard deadline: every representative was responsible for completing all fields on their own accounts and opportunities by July 1. Method was left to them. Completion was not optional.
+
+The follow-on plan was twofold. After the deadline, I would re-run the full audit and compare completeness rates against the baseline to quantify the improvement. Then we would make the critical fields mandatory at the system level so records could not be created or advanced without them, converting a one-time cleanup into a permanent constraint.
+
+## The outcome, honestly
+
+My engagement ended before the July 1 deadline, so I never ran the second audit and cannot report a before-and-after number.
+
+What I can report is what the work actually produced: a quantified diagnosis that changed an executive decision. The campaign I was hired to run was correctly deprioritized in favor of fixing the asset it depended on, and the audit became the evidence base leadership used to mandate remediation across the sales organization with a deadline attached.
+
+I would rather present this without a tidy ending than invent one.
+
+## What I took from it
+
+**Deliver the right thing, not the assigned thing.** A win-back campaign built on ~10% complete data would have been executed on time and been worthless. Saying so was more valuable than shipping it.
+
+**Segment your diagnosis by accountability, not just by severity.** Measuring completeness by account owner turned a vague data quality complaint into a specific management problem with names attached. That cut is what made executive action possible.
+
+**A dashboard is a persuasion tool.** The COO did not act because I described the problem. He acted because the Power BI visuals made the scale of it impossible to look away from, and because they could be shown to the sales team without further explanation.
+
+**Fix the incentive, not the symptom.** Manually backfilling records would have produced clean data that decayed again within a quarter. Mandatory fields and executive accountability address why the data was missing in the first place.

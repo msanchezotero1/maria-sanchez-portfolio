@@ -1,0 +1,61 @@
+---
+title: "Automating a Daily Copy-Paste Job Out of Existence"
+summary: "Replacing manual Salesforce-to-spreadsheet updates with a self-updating leadership dashboard"
+client: "Confidential (B2B technology client)"
+category: "Dashboard Builds"
+role: "BI and Analytics Consultant, Bastille Networks"
+timeframe: "2025"
+tags: ["Zapier", "Looker Studio", "Salesforce", "Automation", "RevOps", "Dashboards"]
+highlights:
+  - label: "Manual update work"
+    value: "Near-daily to zero"
+  - label: "Reporting latency"
+    value: "Manual lag to automatic refresh"
+  - label: "Primary users"
+    value: "Leadership, plus wider team access"
+order: 5
+---
+
+## Context
+
+*Client details are generalized for confidentiality.*
+
+The client sold into a defined universe of high-value target accounts worldwide. Leads arrived from several directions, including webinars, events, and direct contact, and each was associated with a target account in Salesforce.
+
+The question leadership actually cared about was one of coverage. Not "how many leads do we have," but "which of our target accounts do we have no one at yet." That inverted view is the one that drives outbound priority, and it was the hardest one to see.
+
+## The problem
+
+The answer lived in a very large Google Sheet that leadership used for reporting. Salesforce was the source of truth and changed constantly. The spreadsheet did not update itself.
+
+So someone checked Salesforce and manually carried changes into the sheet, close to daily. It was mechanical work with no judgment involved, it was error-prone, and the reporting view was only ever as current as the last time a person had done it. Leadership was making prioritization calls against a spreadsheet whose freshness depended on whether someone had gotten to it that morning.
+
+When I saw the workflow, the thing that stood out was that every step was already deterministic. There was no decision being made. It was pure transfer, which meant it did not need a human.
+
+## The build
+
+I replaced the manual step with an automated pipeline and rebuilt the reporting layer on top of it.
+
+**Source.** Salesforce reports were already configured to refresh on a weekly cadence. That part worked and did not need touching.
+
+**Transfer.** I used Zapier to automate the export from Salesforce into the Google Sheet, removing the manual step entirely. The sheet remained the data layer, so nothing downstream broke and nobody had to learn a new system.
+
+**Reporting.** I built the dashboard in Looker Studio, connected to the Google Sheet as its data source, including a custom home page organizing the views leadership had asked for. Because Looker Studio reads from the connected sheet, the dashboard refreshes on its own whenever the underlying data updates.
+
+The headline view was coverage against the target account list, surfacing which accounts had associated leads and, more usefully, which did not.
+
+I also built supporting dashboards for the client in Looker Studio and Tableau, with Looker Studio as the primary reporting environment.
+
+## The result
+
+The recurring manual update disappeared. Leadership gained a self-maintaining view of pipeline coverage rather than a spreadsheet that was accurate only when someone had recently tended to it, and the dashboard was accessible across the team rather than to whoever held the file.
+
+The technical lift was modest, and I would not overstate it. The value was in noticing that a person was being used as a data connector, and in choosing a no-code tool the client could maintain after my engagement ended rather than a custom solution that would have created a dependency on me.
+
+## What I took from it
+
+**Automate what has no judgment in it.** The test is whether a human is making a decision at each step. Nobody was. That is the clearest possible signal for automation.
+
+**Build for the client's ability to maintain it, not for your own resume.** A scripted pipeline would have looked more impressive on paper. Zapier and Looker Studio meant the client could adjust the system themselves after I left. Handing over something maintainable is part of the deliverable.
+
+**The inverse metric is often the useful one.** Reporting on which accounts had leads was easy and comfortable. Reporting on which ones did not was what actually changed how the team allocated its outbound effort.
