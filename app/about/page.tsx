@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -10,9 +11,15 @@ export default function AboutPage() {
   return (
     <section className="container-page py-20 sm:py-28">
       <div className="grid gap-12 sm:grid-cols-[280px_1fr] sm:items-start">
-        {/* Placeholder photo — replace with a real headshot */}
-        <div className="flex aspect-square w-full max-w-xs items-center justify-center rounded-lg bg-primary-light text-primary sm:max-w-none">
-          <span className="text-sm font-medium uppercase tracking-wide">Photo placeholder</span>
+        <div className="relative aspect-square w-full max-w-xs overflow-hidden rounded-lg bg-primary-light sm:max-w-none">
+          <Image
+            src="/headshot.jpg"
+            alt="Maria Sanchez Otero"
+            fill
+            sizes="(min-width: 640px) 280px, 320px"
+            className="object-cover"
+            priority
+          />
         </div>
 
         <div className="flex flex-col gap-6">
