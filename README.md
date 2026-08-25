@@ -49,9 +49,25 @@ See `components/Analytics.tsx` (mounted in `app/layout.tsx`) for details.
 
 ## Contact form
 
-The contact form (`app/contact/ContactForm.tsx`) is visual-only — submitting
-it does not send an email yet. Connect it to an API route or a form service
-(Formspree, Resend, etc.) when ready.
+The contact form sends email via [Resend](https://resend.com) through
+`app/api/contact/route.ts`. To enable it:
+
+1. Create a free Resend account **using the email address you want
+   submissions delivered to** (e.g. maria.sanchez011602@gmail.com) — Resend's
+   default sandbox sender can only deliver to the account's own email until
+   a custom domain is verified.
+2. Generate an API key at [resend.com/api-keys](https://resend.com/api-keys).
+3. Copy `.env.local.example` to `.env.local` and set `RESEND_API_KEY`.
+4. Add `RESEND_API_KEY` in Vercel → Project Settings → Environment Variables
+   for production, then redeploy.
+
+`CONTACT_TO_EMAIL` is optional and overrides which address submissions go
+to (defaults to maria.sanchez011602@gmail.com). The form includes a hidden
+honeypot field for basic spam filtering.
+
+To send from a custom domain instead of Resend's shared sandbox sender,
+verify a domain in Resend and update the `from` address in
+`app/api/contact/route.ts`.
 
 ## Deploying to Vercel
 

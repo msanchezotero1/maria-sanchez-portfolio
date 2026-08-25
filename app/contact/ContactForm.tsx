@@ -2,28 +2,56 @@
 
 import { useState } from "react";
 
-/**
- * Visual-only contact form.
- *
- * Submission is intentionally NOT wired up yet — no email/API call happens
- * here. When ready to connect it, this is the place to add a fetch() to an
- * API route, or swap in a form service (e.g. Formspree, Resend).
- */
-export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+type Status = "idle" | "loading" | "success" | "error";
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+export default function ContactForm() {
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus("loading");
+    setErrorMessage("");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+      // honeypot — real visitors never see or fill this field
+      company: formData.get("company"),
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        setErrorMessage(data.error || "Something went wrong. Please try again.");
+        setStatus("error");
+        return;
+      }
+
+      setStatus("success");
+      form.reset();
+    } catch {
+      setErrorMessage("Something went wrong. Please check your connection and try again.");
+      setStatus("error");
+    }
   }
 
-  if (submitted) {
+  if (status === "success") {
     return (
       <div className="card text-center">
         <h2 className="mb-2 text-lg font-medium text-ink">Thanks for reaching out!</h2>
         <p className="text-sm text-ink-muted">
-          This form isn't connected to email yet — hook it up to an API route or a
-          form service when ready.
+          Your message is on its way — I'll get back to you soon.
         </p>
       </div>
     );
@@ -31,6 +59,12 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+      {/* Honeypot field — hidden from real visitors via CSS, bots often fill it anyway */}
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor="company">Company</label>
+        <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <div className="flex flex-col gap-2">
         <label htmlFor="name" className="text-sm font-medium text-ink">
           Name
@@ -73,8 +107,14 @@ export default function ContactForm() {
         />
       </div>
 
-      <button type="submit" className="btn-primary w-full">
-        Send message
+      {status === "error" && (
+        <p className="text-sm text-accent" role="alert">
+          {errorMessage}
+        </p>
+      )}
+
+      <button type="submit" disabled={status === "loading"} className="btn-primary w-full disabled:opacity-60">
+        {status === "loading" ? "Sending..." : "Send message"}
       </button>
     </form>
   );
