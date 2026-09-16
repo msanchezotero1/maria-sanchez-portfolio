@@ -9,11 +9,11 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: {
-    default: "Maria Sanchez Otero — Marketing & CRM Analytics",
-    template: "%s — Maria Sanchez Otero",
+    default: "Maria Sanchez Otero | Growth Marketing, Analytics & Systems",
+    template: "%s | Maria Sanchez Otero",
   },
   description:
-    "Marketing & CRM analytics — funnels, dashboards, and campaign systems that show the number that moved.",
+    "Growth marketer working across creative, analytics, and CRM systems. Campaigns that perform, data that proves it, systems that keep it running.",
 };
 
 export default function RootLayout({

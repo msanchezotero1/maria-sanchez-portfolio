@@ -51,7 +51,7 @@ export default function ContactForm() {
       <div className="card text-center">
         <h2 className="mb-2 text-lg font-medium text-ink">Thanks for reaching out!</h2>
         <p className="text-sm text-ink-muted">
-          Your message is on its way — I'll get back to you soon.
+          Your message is on its way. I'll get back to you soon.
         </p>
       </div>
     );

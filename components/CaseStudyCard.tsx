@@ -19,6 +19,20 @@ export default function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
           {frontmatter.title}
         </h3>
         <p className="text-sm text-ink-muted">{frontmatter.summary}</p>
+
+        {frontmatter.tags && frontmatter.tags.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {frontmatter.tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-surface-border px-2.5 py-0.5 text-xs font-medium text-ink-muted"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
         <div className="mt-auto flex items-center justify-between pt-4">
           <span className="text-xs font-medium uppercase tracking-wide text-ink-muted">
             {frontmatter.client}
