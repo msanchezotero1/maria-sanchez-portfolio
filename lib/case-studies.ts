@@ -21,6 +21,8 @@ export type CaseStudyFrontmatter = {
   timeframe?: string;
   tags?: string[];
   order?: number;
+  /** Optional thumbnail shown on the right of the case study row. Omit until a real image exists. */
+  thumbnail?: string;
 };
 
 export type CaseStudy = {

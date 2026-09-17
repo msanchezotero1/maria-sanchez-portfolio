@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <section className="container-page py-20 sm:py-28">
+    <section className="container-page py-20 sm:py-28 lg:py-36">
       <div className="grid gap-12 sm:grid-cols-[280px_1fr] sm:items-start">
-        <div className="relative aspect-square w-full max-w-xs overflow-hidden rounded-lg bg-primary-light sm:max-w-none">
+        <div className="relative aspect-square w-full max-w-xs overflow-hidden bg-rule sm:max-w-none">
           <Image
             src="/headshot.jpg"
             alt="Maria Sanchez Otero"
@@ -23,14 +23,13 @@ export default function AboutPage() {
         </div>
 
         <div className="flex flex-col gap-6">
-          <span className="eyebrow">About</span>
           <h1 className="text-3xl sm:text-4xl">Maria Sanchez Otero</h1>
 
           <p className="text-xl leading-relaxed text-ink">
             I build the analytics and systems layer behind marketing and revenue teams.
           </p>
 
-          <div className="flex flex-col gap-4 text-lg leading-relaxed text-ink-muted">
+          <div className="flex flex-col gap-4 text-lg leading-relaxed text-graphite">
             <p>
               That has looked like different things. Cutting cost per lead by roughly
               90% at a healthcare startup by arguing that our ads were too polished to
@@ -55,7 +54,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <p className="border-t border-surface-border pt-6 text-sm text-ink-muted">
+          <p className="border-t border-rule pt-6 text-sm text-graphite">
             Originally from Cali, Colombia. Currently based in Boston. I work in
             English and Spanish.
           </p>

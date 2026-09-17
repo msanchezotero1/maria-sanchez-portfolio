@@ -26,19 +26,16 @@ const mdxComponents = {
     <h3 className="mt-8 mb-2 text-lg" {...props} />
   ),
   p: (props: React.ComponentProps<"p">) => (
-    <p className="mb-4 leading-relaxed text-ink-muted" {...props} />
+    <p className="mb-4 leading-relaxed text-graphite" {...props} />
   ),
   ul: (props: React.ComponentProps<"ul">) => (
-    <ul className="mb-4 ml-5 list-disc space-y-1.5 text-ink-muted" {...props} />
+    <ul className="mb-4 ml-5 list-disc space-y-1.5 text-graphite" {...props} />
   ),
   ol: (props: React.ComponentProps<"ol">) => (
-    <ol className="mb-4 ml-5 list-decimal space-y-1.5 text-ink-muted" {...props} />
+    <ol className="mb-4 ml-5 list-decimal space-y-1.5 text-graphite" {...props} />
   ),
   blockquote: (props: React.ComponentProps<"blockquote">) => (
-    <blockquote
-      className="mb-4 border-l-2 border-accent bg-surface-muted py-2 pl-4 italic text-ink"
-      {...props}
-    />
+    <blockquote className="mb-4 border-l-2 border-ink py-2 pl-4 italic text-ink" {...props} />
   ),
   table: (props: React.ComponentProps<"table">) => (
     <div className="mb-6 overflow-x-auto">
@@ -46,13 +43,13 @@ const mdxComponents = {
     </div>
   ),
   thead: (props: React.ComponentProps<"thead">) => (
-    <thead className="border-b border-surface-border text-ink" {...props} />
+    <thead className="border-b border-rule text-ink" {...props} />
   ),
   th: (props: React.ComponentProps<"th">) => (
     <th className="py-2 pr-4 font-medium" {...props} />
   ),
   td: (props: React.ComponentProps<"td">) => (
-    <td className="border-b border-surface-border py-2 pr-4 text-ink-muted" {...props} />
+    <td className="border-b border-rule py-2 pr-4 text-graphite" {...props} />
   ),
 };
 
@@ -77,28 +74,26 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
     frontmatter.timeframe ? `Timeframe: ${frontmatter.timeframe}` : null,
   ]
     .filter(Boolean)
-    .join("  ·  ");
+    .join(", ");
 
   return (
-    <article className="container-page max-w-3xl py-20 sm:py-28">
-      <Link href="/work" className="text-sm font-medium text-primary hover:text-primary-dark">
+    <article className="container-page max-w-3xl py-20 sm:py-28 lg:py-36">
+      <Link href="/work" className="link-inline">
         &larr; All case studies
       </Link>
 
-      <div className="mt-6 flex flex-col gap-4 border-b border-surface-border pb-10">
-        <span className="eyebrow">{frontmatter.category}</span>
+      <div className="mt-6 flex flex-col gap-4 border-b border-rule pb-10">
+        <span className="text-sm text-graphite">{frontmatter.category}</span>
         <h1 className="text-3xl sm:text-4xl">{frontmatter.title}</h1>
-        <p className="text-lg text-ink-muted">{frontmatter.summary}</p>
-        <p className="text-sm font-medium uppercase tracking-wide text-ink-muted">
-          {metaLine}
-        </p>
+        <p className="text-lg text-graphite">{frontmatter.summary}</p>
+        <p className="text-sm font-medium text-graphite">{metaLine}</p>
 
         {frontmatter.tags && frontmatter.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 pt-1">
             {frontmatter.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-surface-border px-3 py-1 text-xs font-medium text-ink-muted"
+                className="border border-rule px-3 py-1 text-xs font-medium text-graphite"
               >
                 {tag}
               </span>
@@ -108,17 +103,12 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       </div>
 
       {frontmatter.highlights && frontmatter.highlights.length > 0 && (
-        <div className="grid gap-4 border-b border-surface-border py-10 sm:grid-cols-3">
+        <div className="grid gap-4 border-b border-rule py-10 sm:grid-cols-3">
           {frontmatter.highlights.map((highlight, i) => (
-            <div
-              key={i}
-              className="rounded-md bg-primary-light p-4 text-sm text-primary-dark"
-            >
+            <div key={i} className="border border-rule p-4 text-sm text-ink">
               {isMetric(highlight) ? (
                 <>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-                    {highlight.label}
-                  </p>
+                  <p className="text-xs font-semibold text-graphite">{highlight.label}</p>
                   <p className="mt-1 text-base font-medium">{highlight.value}</p>
                 </>
               ) : (
@@ -138,10 +128,13 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       </div>
 
       {next && next.slug !== params.slug && (
-        <div className="mt-16 border-t border-surface-border pt-8">
-          <p className="eyebrow mb-2">Next case study</p>
-          <Link href={`/work/${next.slug}`} className="text-lg font-medium text-ink hover:text-primary">
-            {next.frontmatter.title} &rarr;
+        <div className="mt-16 border-t border-rule pt-8">
+          <p className="mb-2 text-sm text-graphite">Next case study</p>
+          <Link
+            href={`/work/${next.slug}`}
+            className="text-lg font-medium text-ink transition-colors hover:text-signal"
+          >
+            {next.frontmatter.title}
           </Link>
         </div>
       )}

@@ -75,11 +75,10 @@ const WAYS_TO_WORK: WayToWork[] = [
 
 export default function HowICanHelpPage() {
   return (
-    <section className="container-page py-20 sm:py-28">
+    <section className="container-page py-20 sm:py-28 lg:py-36">
       <div className="mb-14 flex max-w-2xl flex-col gap-4">
-        <span className="eyebrow">How I Can Help</span>
         <h1 className="text-3xl sm:text-4xl">Where I add the most value</h1>
-        <p className="text-lg text-ink-muted">
+        <p className="text-lg text-graphite">
           Most small teams have marketing, data, and CRM living in separate worlds. I work across
           all three, so nothing falls through the cracks.
         </p>
@@ -92,35 +91,24 @@ export default function HowICanHelpPage() {
             <p className="text-sm font-medium text-ink">{pillar.summary}</p>
 
             <div className="flex flex-col gap-1.5">
-              <span className="text-xs font-semibold uppercase tracking-wide text-ink-muted">
-                What I do
-              </span>
-              <p className="text-sm leading-relaxed text-ink-muted">{pillar.whatIDo}</p>
+              <span className="text-xs font-semibold text-graphite">What I do</span>
+              <p className="text-sm leading-relaxed text-graphite">{pillar.whatIDo}</p>
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <span className="text-xs font-semibold uppercase tracking-wide text-ink-muted">
-                What you get
-              </span>
-              <p className="text-sm leading-relaxed text-ink-muted">{pillar.whatYouGet}</p>
+              <span className="text-xs font-semibold text-graphite">What you get</span>
+              <p className="text-sm leading-relaxed text-graphite">{pillar.whatYouGet}</p>
             </div>
 
             <div className="mt-auto flex flex-col gap-1.5 pt-2">
               {pillar.caseStudy && (
-                <Link
-                  href={pillar.caseStudy.href}
-                  className="text-sm font-medium text-primary hover:text-primary-dark"
-                >
-                  See it in action: {pillar.caseStudy.label} &rarr;
+                <Link href={pillar.caseStudy.href} className="link-inline">
+                  See it in action: {pillar.caseStudy.label}
                 </Link>
               )}
               {pillar.caseStudies?.map((cs) => (
-                <Link
-                  key={cs.href}
-                  href={cs.href}
-                  className="text-sm font-medium text-primary hover:text-primary-dark"
-                >
-                  See it in action: {cs.label} &rarr;
+                <Link key={cs.href} href={cs.href} className="link-inline">
+                  See it in action: {cs.label}
                 </Link>
               ))}
             </div>
@@ -128,19 +116,16 @@ export default function HowICanHelpPage() {
         ))}
       </div>
 
-      <div className="mt-16 flex flex-col gap-8 border-t border-surface-border pt-12">
+      <div className="mt-16 flex flex-col gap-8 border-t border-rule pt-12">
         <h2 className="text-2xl">Ways to work together</h2>
         <div className="grid gap-6 sm:grid-cols-3">
           {WAYS_TO_WORK.map((way) => (
             <div key={way.title} className="card flex flex-col gap-3">
               <h3 className="text-base font-medium text-ink">{way.title}</h3>
-              <p className="text-sm leading-relaxed text-ink-muted">{way.description}</p>
+              <p className="text-sm leading-relaxed text-graphite">{way.description}</p>
               {way.cta && (
-                <Link
-                  href={way.cta.href}
-                  className="mt-auto text-sm font-medium text-primary hover:text-primary-dark"
-                >
-                  {way.cta.label} &rarr;
+                <Link href={way.cta.href} className="link-inline mt-auto">
+                  {way.cta.label}
                 </Link>
               )}
             </div>
@@ -148,12 +133,11 @@ export default function HowICanHelpPage() {
         </div>
       </div>
 
-      <p className="mt-12 text-xs uppercase tracking-wide text-ink-muted/70">
-        HubSpot &middot; Salesforce &middot; GA4 &middot; Looker &middot; Sigma &middot; Power BI
-        &middot; Meta Ads &middot; Python &middot; SQL
+      <p className="mt-12 text-sm text-graphite">
+        HubSpot, Salesforce, GA4, Looker, Sigma, Power BI, Meta Ads, Python, SQL
       </p>
 
-      <div className="mt-16 flex flex-col items-start gap-4 border-t border-surface-border pt-12">
+      <div className="mt-16 flex flex-col items-start gap-4 border-t border-rule pt-12">
         <h2 className="text-xl">Have a project in mind?</h2>
         <Link href="/contact" className="btn-primary">
           Start a conversation

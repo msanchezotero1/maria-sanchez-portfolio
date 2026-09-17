@@ -8,35 +8,102 @@
   }
 
   body {
-    @apply bg-surface-muted text-ink antialiased;
+    @apply bg-paper text-ink antialiased;
+    font-size: 17px;
+    line-height: 1.6;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-medium tracking-tight text-ink;
+    @apply font-semibold tracking-tight text-ink;
+  }
+
+  p {
+    max-width: 70ch;
+  }
+
+  a,
+  button {
+    @apply outline-none;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme("colors.signal");
+    outline-offset: 2px;
   }
 }
 
 @layer components {
   .container-page {
-    @apply mx-auto w-full max-w-content px-6 sm:px-8 lg:px-10;
+    @apply mx-auto w-full max-w-content px-6 sm:px-10 lg:px-16;
+  }
+
+  .section-y {
+    @apply py-20 sm:py-28 lg:py-36;
+  }
+
+  .section-rule {
+    @apply border-t border-rule;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-primary-dark;
+    @apply inline-flex items-center justify-center rounded bg-ink px-6 py-3 text-sm font-medium text-paper transition-opacity hover:opacity-80;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-md border border-ink/15 bg-transparent px-6 py-3 text-sm font-medium text-ink transition-colors hover:border-primary hover:text-primary;
+    @apply inline-flex items-center text-sm font-medium text-ink underline-offset-4 transition-colors hover:text-signal hover:underline;
   }
 
-  .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.14em] text-accent;
+  .link-inline {
+    @apply text-sm font-medium text-ink underline-offset-4 transition-colors hover:text-signal hover:underline;
   }
 
   .card {
-    @apply rounded-lg border border-surface-border bg-surface p-6 transition-colors hover:border-primary/40;
+    @apply border border-rule bg-paper p-6;
   }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-line {
+    opacity: 0;
+    animation: fade-up 0.6s ease-out forwards;
+  }
+
+  .hero-line:nth-child(1) {
+    animation-delay: 0ms;
+  }
+
+  .hero-line:nth-child(2) {
+    animation-delay: 120ms;
+  }
+
+  .hero-line:nth-child(3) {
+    animation-delay: 240ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-line {
+    opacity: 1;
+  }
+}
+
+.display {
+  font-size: clamp(2.75rem, 1.1rem + 6vw, 6.5rem);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.03em;
 }
