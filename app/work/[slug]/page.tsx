@@ -37,6 +37,12 @@ const mdxComponents = {
   blockquote: (props: React.ComponentProps<"blockquote">) => (
     <blockquote className="mb-4 border-l-2 border-ink py-2 pl-4 italic text-ink" {...props} />
   ),
+  a: (props: React.ComponentProps<"a">) => (
+    <a
+      className="text-ink underline underline-offset-4 transition-colors hover:text-signal"
+      {...props}
+    />
+  ),
   table: (props: React.ComponentProps<"table">) => (
     <div className="mb-6 overflow-x-auto">
       <table className="w-full border-collapse text-left text-sm" {...props} />

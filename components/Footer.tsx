@@ -14,6 +14,9 @@ export default function Footer() {
           <Link href="/work" className="text-sm text-graphite hover:text-signal">
             Work
           </Link>
+          <Link href="/studio" className="text-sm text-graphite hover:text-signal">
+            Studio
+          </Link>
           <Link href="/about" className="text-sm text-graphite hover:text-signal">
             About
           </Link>

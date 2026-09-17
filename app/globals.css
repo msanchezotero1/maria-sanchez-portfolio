@@ -107,3 +107,10 @@
   font-weight: 600;
   letter-spacing: -0.03em;
 }
+
+.display-sm {
+  font-size: clamp(2.25rem, 1rem + 4.5vw, 4.5rem);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}

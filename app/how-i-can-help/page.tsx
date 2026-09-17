@@ -23,7 +23,7 @@ const PILLARS: Pillar[] = [
     title: "Grow",
     summary: "Campaigns and creative that convert.",
     whatIDo:
-      "Paid and organic social, in-house creative production, A/B testing, and landing page and funnel optimization.",
+      "Paid and organic social, in-house creative production, social media design and short-form video, A/B testing, and landing page and funnel optimization.",
     whatYouGet: "Campaigns launched, a testing plan, and a clear monthly performance readout.",
     caseStudy: { label: "Cutting cost per lead by ~90%", href: "/work/cpl-optimization" },
   },
@@ -134,7 +134,7 @@ export default function HowICanHelpPage() {
       </div>
 
       <p className="mt-12 text-sm text-graphite">
-        HubSpot, Salesforce, GA4, Looker, Sigma, Power BI, Meta Ads, Python, SQL
+        HubSpot, Salesforce, GA4, Looker, Sigma, Power BI, Meta Ads, Canva, CapCut, Python, SQL
       </p>
 
       <div className="mt-16 flex flex-col items-start gap-4 border-t border-rule pt-12">
