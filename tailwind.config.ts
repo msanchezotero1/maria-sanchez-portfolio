@@ -10,11 +10,11 @@ const config: Config = {
     extend: {
       colors: {
         // Cream / Dark green / Midnight green / Moss green / Rosy brown
-        paper: "#F5F1E8",
-        "paper-tint": "#EAE4D8",
+        paper: "#F8F6F1",
+        "paper-tint": "#EDEAE2",
         ink: "#0A3323",
         graphite: "#2F4A3E",
-        rule: "#DDD6C8",
+        rule: "#E0DCD2",
         signal: "#105666",
         sage: "#839958",
         rose: "#D3968C",
