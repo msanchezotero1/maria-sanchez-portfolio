@@ -9,15 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Villa Nova / Ocean Deep / Big River / Siren Song
-        paper: "#E2E0C8",
-        "paper-tint": "#D9D7BE",
-        ink: "#4E635E",
-        graphite: "#3F4F4A",
-        rule: "#C9C8AE",
-        signal: "#6B7663",
-        sage: "#A6B49E",
-        mist: "#C3CDBB",
+        // Almond Cream / Olive Grove / Coastal Sage / Meadow Mist / Golden Chamomile
+        paper: "#F0EAD8",
+        "paper-tint": "#E6DFC9",
+        ink: "#6A673F",
+        graphite: "#4A4830",
+        rule: "#DDD5BE",
+        signal: "#5F7671",
+        sage: "#ACB090",
+        gold: "#D2BF81",
         wine: "#A12A1E",
       },
       fontFamily: {
