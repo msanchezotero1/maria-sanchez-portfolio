@@ -68,7 +68,7 @@ export default function HomePage() {
           />
           <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-paper-tint">
             <Image
-              src="/headshot-gallery.jpg"
+              src="/headshot-cream-v2.jpg"
               alt="Maria Sanchez Otero"
               fill
               sizes="(min-width: 1024px) 360px, 300px"
