@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Schibsted_Grotesk } from "next/font/google";
+import { Schibsted_Grotesk, Fraunces } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
@@ -9,6 +9,15 @@ const schibstedGrotesk = Schibsted_Grotesk({
   subsets: ["latin"],
   variable: "--font-sans",
   weight: ["400", "500", "600", "700"],
+});
+
+// Headline/wordmark serif — paired with Schibsted Grotesk for a warmer,
+// more editorial feel. Fraunces has a genuine "soft" optical character
+// (rounded, slightly warm terminals) rather than a sharp classic serif.
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  weight: ["500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -26,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={schibstedGrotesk.variable}>
+    <html lang="en" className={`${schibstedGrotesk.variable} ${fraunces.variable}`}>
       <body className="flex min-h-screen flex-col bg-paper font-sans text-ink">
         {/*
           GA4 placeholder — see components/Analytics.tsx for setup instructions.

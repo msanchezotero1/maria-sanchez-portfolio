@@ -17,7 +17,7 @@
   h2,
   h3,
   h4 {
-    @apply font-semibold tracking-tight text-ink;
+    @apply font-serif font-semibold tracking-tight text-ink;
   }
 
   p {
@@ -49,7 +49,7 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded bg-ink px-6 py-3 text-sm font-medium text-paper transition-opacity hover:opacity-80;
+    @apply inline-flex items-center justify-center rounded-sm bg-ink px-6 py-3 text-sm font-medium text-paper transition-opacity hover:opacity-80;
   }
 
   .btn-secondary {
@@ -61,7 +61,7 @@
   }
 
   .card {
-    @apply border border-rule bg-paper p-6;
+    @apply border border-rule bg-paper-tint rounded-md p-6;
   }
 }
 
@@ -102,15 +102,17 @@
 }
 
 .display {
+  font-family: var(--font-serif);
   font-size: clamp(2.75rem, 1.1rem + 6vw, 6.5rem);
   line-height: 1;
-  font-weight: 600;
-  letter-spacing: -0.03em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .display-sm {
+  font-family: var(--font-serif);
   font-size: clamp(2.25rem, 1rem + 4.5vw, 4.5rem);
   line-height: 1.05;
-  font-weight: 600;
-  letter-spacing: -0.03em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }

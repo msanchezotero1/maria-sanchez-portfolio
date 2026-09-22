@@ -49,7 +49,7 @@ export default function ContactForm() {
   if (status === "success") {
     return (
       <div className="card text-center">
-        <h2 className="mb-2 text-lg font-medium text-ink">Thanks for reaching out!</h2>
+        <h2 className="mb-2 text-lg text-ink">Thanks for reaching out!</h2>
         <p className="text-sm text-graphite">
           Your message is on its way. I'll get back to you soon.
         </p>
@@ -75,7 +75,7 @@ export default function ContactForm() {
           type="text"
           required
           placeholder="Your name"
-          className="border border-rule bg-paper px-4 py-3 text-sm text-ink placeholder:text-graphite/60 focus:border-signal focus:outline-none"
+          className="rounded-sm border border-rule bg-paper px-4 py-3 text-sm text-ink placeholder:text-graphite/60 focus:border-signal focus:outline-none"
         />
       </div>
 
@@ -89,7 +89,7 @@ export default function ContactForm() {
           type="email"
           required
           placeholder="you@company.com"
-          className="border border-rule bg-paper px-4 py-3 text-sm text-ink placeholder:text-graphite/60 focus:border-signal focus:outline-none"
+          className="rounded-sm border border-rule bg-paper px-4 py-3 text-sm text-ink placeholder:text-graphite/60 focus:border-signal focus:outline-none"
         />
       </div>
 
@@ -103,12 +103,12 @@ export default function ContactForm() {
           rows={5}
           required
           placeholder="Tell me a bit about your project..."
-          className="resize-none border border-rule bg-paper px-4 py-3 text-sm text-ink placeholder:text-graphite/60 focus:border-signal focus:outline-none"
+          className="resize-none rounded-sm border border-rule bg-paper px-4 py-3 text-sm text-ink placeholder:text-graphite/60 focus:border-signal focus:outline-none"
         />
       </div>
 
       {status === "error" && (
-        <p className="text-sm text-signal" role="alert">
+        <p className="text-sm text-wine" role="alert">
           {errorMessage}
         </p>
       )}

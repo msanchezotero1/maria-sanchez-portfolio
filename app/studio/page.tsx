@@ -51,7 +51,7 @@ export default function StudioPage() {
               key={item.title}
               className={`flex flex-col gap-2 py-8 sm:px-8 sm:py-14 sm:first:pl-0 lg:last:pr-0 ${item.border}`}
             >
-              <h3 className="text-base font-medium text-ink">{item.title}</h3>
+              <h3 className="text-base text-ink">{item.title}</h3>
               <p className="text-sm text-graphite">{item.description}</p>
             </div>
           ))}
@@ -66,7 +66,7 @@ export default function StudioPage() {
 
       <section className="section-rule section-y">
         <div className="container-page flex flex-col items-start gap-6">
-          <h2 className="text-2xl font-medium sm:text-3xl">
+          <h2 className="text-2xl sm:text-3xl">
             Want to see the numbers behind the creative?
           </h2>
           <Link href="/work" className="link-inline">

@@ -60,7 +60,7 @@ export default function HomePage() {
               key={point.label}
               className="flex flex-1 flex-col gap-2 py-8 sm:px-10 sm:py-14 sm:first:pl-0 sm:last:pr-0"
             >
-              <span className="text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+              <span className="font-serif text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
                 {point.figure}
               </span>
               <span className="text-base text-graphite">{point.label}</span>
@@ -71,13 +71,13 @@ export default function HomePage() {
 
       <section className="section-rule section-y">
         <div className="container-page">
-          <h2 className="mb-14 text-2xl font-medium sm:text-3xl">
+          <h2 className="mb-14 text-2xl sm:text-3xl">
             Three things most small teams need connected
           </h2>
           <div className="grid gap-10 sm:grid-cols-3">
             {PILLARS_PREVIEW.map((area) => (
               <div key={area.title} className="flex flex-col gap-3 border-t-2 border-ink pt-6">
-                <h3 className="text-xl font-medium text-ink">{area.title}</h3>
+                <h3 className="text-xl text-ink">{area.title}</h3>
                 <p className="text-base text-graphite">{area.description}</p>
               </div>
             ))}
@@ -91,7 +91,7 @@ export default function HomePage() {
       {featuredCaseStudies.length > 0 && (
         <section className="section-rule section-y">
           <div className="container-page">
-            <h2 className="mb-6 text-2xl font-medium sm:text-3xl">Selected work</h2>
+            <h2 className="mb-6 text-2xl sm:text-3xl">Selected work</h2>
             <div className="divide-y divide-rule">
               {featuredCaseStudies.map((caseStudy) => (
                 <CaseStudyCard key={caseStudy.slug} caseStudy={caseStudy} />

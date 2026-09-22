@@ -32,7 +32,7 @@ export default function Nav() {
       }`}
     >
       <div className="container-page flex h-20 items-center justify-between">
-        <Link href="/" className="text-base font-semibold tracking-tight text-ink">
+        <Link href="/" className="font-serif text-base font-semibold tracking-tight text-ink">
           Maria Sanchez Otero
         </Link>
 
@@ -61,7 +61,7 @@ export default function Nav() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center border border-rule md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-rule md:hidden"
           aria-label="Toggle menu"
           aria-expanded={open}
         >

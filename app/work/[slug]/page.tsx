@@ -99,7 +99,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             {frontmatter.tags.map((tag) => (
               <span
                 key={tag}
-                className="border border-rule px-3 py-1 text-xs font-medium text-graphite"
+                className="rounded-full border border-rule px-3 py-1 text-xs font-medium text-graphite"
               >
                 {tag}
               </span>
@@ -111,7 +111,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       {frontmatter.highlights && frontmatter.highlights.length > 0 && (
         <div className="grid gap-4 border-b border-rule py-10 sm:grid-cols-3">
           {frontmatter.highlights.map((highlight, i) => (
-            <div key={i} className="border border-rule p-4 text-sm text-ink">
+            <div key={i} className="rounded-md border border-rule p-4 text-sm text-ink">
               {isMetric(highlight) ? (
                 <>
                   <p className="text-xs font-semibold text-graphite">{highlight.label}</p>

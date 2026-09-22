@@ -121,7 +121,7 @@ export default function HowICanHelpPage() {
         <div className="grid gap-6 sm:grid-cols-3">
           {WAYS_TO_WORK.map((way) => (
             <div key={way.title} className="card flex flex-col gap-3">
-              <h3 className="text-base font-medium text-ink">{way.title}</h3>
+              <h3 className="text-base text-ink">{way.title}</h3>
               <p className="text-sm leading-relaxed text-graphite">{way.description}</p>
               {way.cta && (
                 <Link href={way.cta.href} className="link-inline mt-auto">

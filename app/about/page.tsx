@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <section className="container-page py-20 sm:py-28 lg:py-36">
       <div className="grid gap-12 sm:grid-cols-[280px_1fr] sm:items-start">
-        <div className="relative aspect-square w-full max-w-xs overflow-hidden bg-rule sm:max-w-none">
+        <div className="relative aspect-square w-full max-w-xs overflow-hidden rounded-md bg-rule sm:max-w-none">
           <Image
             src="/headshot.jpg"
             alt="Maria Sanchez Otero"

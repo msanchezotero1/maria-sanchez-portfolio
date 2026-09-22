@@ -15,7 +15,7 @@ export default function VideoCard({
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="relative w-full bg-rule" style={{ aspectRatio: "9 / 16" }}>
+      <div className="relative w-full overflow-hidden rounded-md bg-rule" style={{ aspectRatio: "9 / 16" }}>
         {playing ? (
           <video
             src={video.src}

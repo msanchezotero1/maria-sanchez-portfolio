@@ -48,7 +48,7 @@ export default function StudioGallery({
 
       {showPosts && (
         <div className="pt-16">
-          <h2 className="mb-10 text-2xl font-medium sm:text-3xl">Posts and carousels</h2>
+          <h2 className="mb-10 text-2xl sm:text-3xl">Posts and carousels</h2>
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((post, i) => (
               <PostCard
@@ -64,7 +64,7 @@ export default function StudioGallery({
 
       {showVideos && (
         <div className={showPosts ? "mt-20 border-t border-rule pt-16" : "pt-16"}>
-          <h2 className="mb-10 text-2xl font-medium sm:text-3xl">Reels and video</h2>
+          <h2 className="mb-10 text-2xl sm:text-3xl">Reels and video</h2>
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
             {videos.map((video, i) => (
               <VideoCard key={video.slug} video={video} priority={i < 4} />

@@ -9,7 +9,7 @@ export default function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
     <Link href={`/work/${slug}`} className="group flex items-center justify-between gap-8 py-10">
       <div className="flex flex-1 flex-col gap-3">
         <span className="text-sm text-graphite">{frontmatter.category}</span>
-        <h3 className="text-2xl font-medium text-ink transition-colors group-hover:text-signal sm:text-3xl">
+        <h3 className="text-2xl text-ink transition-colors group-hover:text-signal sm:text-3xl">
           {frontmatter.title}
         </h3>
         <p className="max-w-xl text-base text-graphite">{frontmatter.summary}</p>
@@ -19,7 +19,7 @@ export default function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
             {frontmatter.tags.map((tag) => (
               <span
                 key={tag}
-                className="border border-rule px-2.5 py-0.5 text-xs font-medium text-graphite"
+                className="rounded-full border border-rule px-2.5 py-0.5 text-xs font-medium text-graphite"
               >
                 {tag}
               </span>
@@ -31,7 +31,7 @@ export default function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
       </div>
 
       {frontmatter.thumbnail && (
-        <div className="relative hidden h-28 w-40 flex-shrink-0 overflow-hidden sm:block">
+        <div className="relative hidden h-28 w-40 flex-shrink-0 overflow-hidden rounded-md sm:block">
           <Image
             src={frontmatter.thumbnail}
             alt=""
