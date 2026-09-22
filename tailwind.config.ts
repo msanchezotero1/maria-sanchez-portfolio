@@ -9,13 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#F8F5F0",
-        "paper-tint": "#EFE9E1",
-        ink: "#1B1418",
-        graphite: "#554B50",
-        rule: "#DDD5CE",
-        signal: "#8E1F4F",
-        blush: "#E9D3D6",
+        paper: "#F3EEE5",
+        "paper-tint": "#EAE3D7",
+        ink: "#1E1915",
+        graphite: "#574D44",
+        rule: "#D8CFC2",
+        signal: "#7A4B2C",
+        sand: "#D8C3A5",
         wine: "#B42318",
       },
       fontFamily: {

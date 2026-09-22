@@ -38,7 +38,9 @@ export default function HomePage() {
         <div className="flex flex-col items-start gap-8">
           <p className="flex items-center gap-3 text-sm font-medium uppercase tracking-[0.16em] text-graphite">
             <span aria-hidden="true" className="h-px w-10 bg-signal" />
-            Hi, I'm Maria<span className="hidden sm:inline"> · Growth marketer</span> · EN / ES
+            <span>
+              Hi, I'm Maria<span className="hidden sm:inline"> · Growth marketer</span> · EN / ES
+            </span>
           </p>
           <h1 className="display-hero text-ink">
             <span className="hero-line block">Marketing that <em className="whitespace-nowrap font-medium italic text-signal">performs.</em></span>
@@ -62,9 +64,9 @@ export default function HomePage() {
         <div className="relative order-first mx-auto w-full max-w-[180px] sm:max-w-[280px] lg:order-none lg:max-w-[360px]">
           <div
             aria-hidden="true"
-            className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-t-full bg-blush sm:translate-x-5 sm:translate-y-5"
+            className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-sm bg-sand sm:translate-x-5 sm:translate-y-5"
           />
-          <div className="relative aspect-[4/5] overflow-hidden rounded-t-full bg-white">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-white">
             <Image
               src="/headshot.jpg"
               alt="Maria Sanchez Otero"
@@ -84,7 +86,7 @@ export default function HomePage() {
               key={point.label}
               className="flex flex-1 flex-col gap-2 py-8 sm:px-10 sm:py-14 sm:first:pl-0 sm:last:pr-0"
             >
-              <span className="font-serif text-4xl font-medium italic tracking-tight text-blush sm:text-5xl">
+              <span className="font-serif text-4xl font-medium italic tracking-tight text-sand sm:text-5xl">
                 {point.figure}
               </span>
               <span className="text-base text-paper/75">{point.label}</span>
