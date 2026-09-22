@@ -9,12 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Beige / Dark green / Midnight green / Moss green / Rosy brown
-        paper: "#F7F4D5",
-        "paper-tint": "#ECE8C6",
+        // Cream / Dark green / Midnight green / Moss green / Rosy brown
+        paper: "#F5F1E8",
+        "paper-tint": "#EAE4D8",
         ink: "#0A3323",
         graphite: "#2F4A3E",
-        rule: "#DCD8B6",
+        rule: "#DDD6C8",
         signal: "#105666",
         sage: "#839958",
         rose: "#D3968C",
