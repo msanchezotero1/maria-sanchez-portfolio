@@ -39,7 +39,7 @@ const mdxComponents = {
   ),
   a: (props: React.ComponentProps<"a">) => (
     <a
-      className="text-ink underline underline-offset-4 transition-colors hover:text-signal"
+      className="text-ink underline decoration-signal underline-offset-4 transition-colors hover:decoration-2"
       {...props}
     />
   ),

@@ -106,7 +106,7 @@ export default function Lightbox({
         <button
           type="button"
           onClick={onClose}
-          className="absolute -top-10 right-0 text-sm font-medium text-paper hover:text-signal"
+          className="absolute -top-10 right-0 text-sm font-medium text-paper hover:text-sky"
           aria-label="Close"
         >
           Close
@@ -118,7 +118,7 @@ export default function Lightbox({
               type="button"
               onClick={goPrev}
               aria-label="Previous slide"
-              className="absolute left-0 z-10 px-2 py-4 text-2xl text-paper hover:text-signal"
+              className="absolute left-0 z-10 px-2 py-4 text-2xl text-paper hover:text-sky"
             >
               &#8249;
             </button>
@@ -143,7 +143,7 @@ export default function Lightbox({
               type="button"
               onClick={goNext}
               aria-label="Next slide"
-              className="absolute right-0 z-10 px-2 py-4 text-2xl text-paper hover:text-signal"
+              className="absolute right-0 z-10 px-2 py-4 text-2xl text-paper hover:text-sky"
             >
               &#8250;
             </button>

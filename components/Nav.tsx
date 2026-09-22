@@ -46,7 +46,7 @@ export default function Nav() {
                 href={link.href}
                 className={`text-sm font-medium transition-colors ${
                   isActive
-                    ? "text-ink underline decoration-sage decoration-2 underline-offset-8"
+                    ? "text-ink underline decoration-signal decoration-2 underline-offset-8"
                     : "text-graphite hover:text-ink"
                 }`}
               >
@@ -84,7 +84,7 @@ export default function Nav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="px-2 py-2.5 text-sm font-medium text-graphite hover:text-signal"
+                className="px-2 py-2.5 text-sm font-medium text-graphite hover:text-ink"
               >
                 {link.label}
               </Link>
