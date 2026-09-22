@@ -15,11 +15,9 @@ const config: Config = {
         ink: "#0A3323",
         graphite: "#2F4A3E",
         rule: "#DDD6C8",
-        signal: "#5A7039",
+        signal: "#00708A",
         sage: "#839958",
         rose: "#D3968C",
-        // Rosy brown deepened to pass 3:1 contrast for large headline text
-        "rose-deep": "#B06C60",
         wine: "#A12A1E",
       },
       fontFamily: {
