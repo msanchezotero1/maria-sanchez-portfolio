@@ -66,9 +66,9 @@ export default function HomePage() {
             aria-hidden="true"
             className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-sm bg-sand sm:translate-x-5 sm:translate-y-5"
           />
-          <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-white">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-paper-tint">
             <Image
-              src="/headshot.jpg"
+              src="/headshot-warm.jpg"
               alt="Maria Sanchez Otero"
               fill
               sizes="(min-width: 1024px) 360px, 300px"
