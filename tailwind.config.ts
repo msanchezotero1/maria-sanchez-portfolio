@@ -9,15 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Almond Cream / Olive Grove / Coastal Sage / Meadow Mist / Golden Chamomile
-        paper: "#F0EAD8",
-        "paper-tint": "#E6DFC9",
-        ink: "#6A673F",
-        graphite: "#4A4830",
-        rule: "#DDD5BE",
-        signal: "#5F7671",
-        sage: "#ACB090",
-        gold: "#D2BF81",
+        // Beige / Dark green / Midnight green / Moss green / Rosy brown
+        paper: "#F7F4D5",
+        "paper-tint": "#ECE8C6",
+        ink: "#0A3323",
+        graphite: "#2F4A3E",
+        rule: "#DCD8B6",
+        signal: "#105666",
+        sage: "#839958",
+        rose: "#D3968C",
         wine: "#A12A1E",
       },
       fontFamily: {

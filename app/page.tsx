@@ -37,7 +37,7 @@ export default function HomePage() {
       <section className="container-page grid items-center gap-10 pb-20 pt-6 sm:gap-12 sm:pb-28 sm:pt-20 lg:grid-cols-[1fr_360px] lg:gap-16 lg:pb-32 lg:pt-24">
         <div className="flex flex-col items-start gap-8">
           <p className="flex items-center gap-3 text-sm font-medium uppercase tracking-[0.16em] text-graphite">
-            <span aria-hidden="true" className="h-px w-10 bg-signal" />
+            <span aria-hidden="true" className="h-px w-10 bg-sage" />
             <span>
               Hi, I'm Maria<span className="hidden sm:inline"> · Growth marketer</span> · EN / ES
             </span>
@@ -64,11 +64,11 @@ export default function HomePage() {
         <div className="relative order-first mx-auto w-full max-w-[180px] sm:max-w-[280px] lg:order-none lg:max-w-[360px]">
           <div
             aria-hidden="true"
-            className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-sm bg-sage sm:translate-x-5 sm:translate-y-5"
+            className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-sm bg-rose sm:translate-x-5 sm:translate-y-5"
           />
           <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-paper-tint">
             <Image
-              src="/headshot-cream.jpg"
+              src="/headshot-beige.jpg"
               alt="Maria Sanchez Otero"
               fill
               sizes="(min-width: 1024px) 360px, 300px"
@@ -86,7 +86,7 @@ export default function HomePage() {
               key={point.label}
               className="flex flex-1 flex-col gap-2 py-8 sm:px-10 sm:py-14 sm:first:pl-0 sm:last:pr-0"
             >
-              <span className="font-serif text-4xl font-medium italic tracking-tight text-gold sm:text-5xl">
+              <span className="font-serif text-4xl font-medium italic tracking-tight text-rose sm:text-5xl">
                 {point.figure}
               </span>
               <span className="text-base text-paper">{point.label}</span>
