@@ -9,14 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#F3EEE5",
-        "paper-tint": "#EAE3D7",
-        ink: "#1E1915",
-        graphite: "#574D44",
-        rule: "#D8CFC2",
-        signal: "#7A4B2C",
-        sand: "#D8C3A5",
-        wine: "#B42318",
+        // Villa Nova / Ocean Deep / Big River / Siren Song
+        paper: "#E2E0C8",
+        "paper-tint": "#D9D7BE",
+        ink: "#4E635E",
+        graphite: "#3F4F4A",
+        rule: "#C9C8AE",
+        signal: "#6B7663",
+        sage: "#A6B49E",
+        mist: "#C3CDBB",
+        wine: "#A12A1E",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],

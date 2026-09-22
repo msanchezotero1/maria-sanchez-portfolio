@@ -64,11 +64,11 @@ export default function HomePage() {
         <div className="relative order-first mx-auto w-full max-w-[180px] sm:max-w-[280px] lg:order-none lg:max-w-[360px]">
           <div
             aria-hidden="true"
-            className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-sm bg-sand sm:translate-x-5 sm:translate-y-5"
+            className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-sm bg-sage sm:translate-x-5 sm:translate-y-5"
           />
           <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-paper-tint">
             <Image
-              src="/headshot-warm.jpg"
+              src="/headshot-hero.jpg"
               alt="Maria Sanchez Otero"
               fill
               sizes="(min-width: 1024px) 360px, 300px"
@@ -86,10 +86,10 @@ export default function HomePage() {
               key={point.label}
               className="flex flex-1 flex-col gap-2 py-8 sm:px-10 sm:py-14 sm:first:pl-0 sm:last:pr-0"
             >
-              <span className="font-serif text-4xl font-medium italic tracking-tight text-sand sm:text-5xl">
+              <span className="font-serif text-4xl font-medium italic tracking-tight text-mist sm:text-5xl">
                 {point.figure}
               </span>
-              <span className="text-base text-paper/75">{point.label}</span>
+              <span className="text-base text-paper">{point.label}</span>
             </div>
           ))}
         </div>

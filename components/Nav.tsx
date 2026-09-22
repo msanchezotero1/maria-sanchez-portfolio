@@ -45,7 +45,9 @@ export default function Nav() {
                 key={link.href}
                 href={link.href}
                 className={`text-sm font-medium transition-colors ${
-                  isActive ? "text-signal" : "text-graphite hover:text-ink"
+                  isActive
+                    ? "text-ink underline decoration-sage decoration-2 underline-offset-8"
+                    : "text-graphite hover:text-ink"
                 }`}
               >
                 {link.label}
