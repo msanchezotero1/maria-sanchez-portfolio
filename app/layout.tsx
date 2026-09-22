@@ -1,23 +1,21 @@
 import type { Metadata } from "next";
-import { Schibsted_Grotesk, Fraunces } from "next/font/google";
+import { Lora, Playfair_Display } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
 import "./globals.css";
 
-const schibstedGrotesk = Schibsted_Grotesk({
+// Body text. Both fonts are variable, so every weight is available.
+const lora = Lora({
   subsets: ["latin"],
-  variable: "--font-sans",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
+  style: ["normal", "italic"],
 });
 
-// Headline/wordmark serif — paired with Schibsted Grotesk for a warmer,
-// more editorial feel. Fraunces has a genuine "soft" optical character
-// (rounded, slightly warm terminals) rather than a sharp classic serif.
-const fraunces = Fraunces({
+// Headlines and wordmark.
+const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-serif",
-  weight: ["500", "600"],
   style: ["normal", "italic"],
 });
 
@@ -36,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${schibstedGrotesk.variable} ${fraunces.variable}`}>
+    <html lang="en" className={`${lora.variable} ${playfair.variable}`}>
       <body className="flex min-h-screen flex-col bg-paper font-sans text-ink">
         {/*
           GA4 placeholder — see components/Analytics.tsx for setup instructions.

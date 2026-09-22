@@ -21,7 +21,7 @@ const config: Config = {
         wine: "#A12A1E",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        sans: ["var(--font-body)", "Georgia", "serif"],
         serif: ["var(--font-serif)", "Georgia", "Times New Roman", "serif"],
       },
       maxWidth: {
