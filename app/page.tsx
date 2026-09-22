@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { getAllCaseStudies } from "@/lib/case-studies";
 import CaseStudyCard from "@/components/CaseStudyCard";
@@ -33,43 +34,66 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="container-page flex flex-col items-start gap-10 pb-20 pt-16 sm:pb-28 sm:pt-24 lg:pb-36 lg:pt-32">
-        <h1 className="display text-ink">
-          <span className="hero-line block">Marketing that performs.</span>
-          <span className="hero-line block">Data that proves it.</span>
-          <span className="hero-line block">Systems that keep it running.</span>
-        </h1>
-        <p className="max-w-[50ch] text-lg text-graphite">
-          I'm a growth marketer who sees the whole engine, from the creative to the dashboard to
-          the CRM.
-        </p>
-        <div className="flex flex-wrap items-center gap-6">
-          <Link href="/contact" className="btn-primary">
-            Work with me
-          </Link>
-          <Link href="/resume.pdf" className="btn-secondary">
-            Hiring? View my resume
-          </Link>
+      <section className="container-page grid items-center gap-10 pb-20 pt-6 sm:gap-12 sm:pb-28 sm:pt-20 lg:grid-cols-[1fr_360px] lg:gap-16 lg:pb-32 lg:pt-24">
+        <div className="flex flex-col items-start gap-8">
+          <p className="flex items-center gap-3 text-sm font-medium uppercase tracking-[0.16em] text-graphite">
+            <span aria-hidden="true" className="h-px w-10 bg-signal" />
+            Hi, I'm Maria<span className="hidden sm:inline"> · Growth marketer</span> · EN / ES
+          </p>
+          <h1 className="display-hero text-ink">
+            <span className="hero-line block">Marketing that <em className="whitespace-nowrap font-medium italic text-signal">performs.</em></span>
+            <span className="hero-line block">Data that <em className="whitespace-nowrap font-medium italic text-signal">proves it.</em></span>
+            <span className="hero-line block">Systems that <em className="whitespace-nowrap font-medium italic text-signal">keep it running.</em></span>
+          </h1>
+          <p className="max-w-[50ch] text-lg text-graphite">
+            I'm a growth marketer who sees the whole engine, from the creative to the dashboard to
+            the CRM.
+          </p>
+          <div className="flex flex-wrap items-center gap-6">
+            <Link href="/contact" className="btn-primary">
+              Work with me
+            </Link>
+            <Link href="/resume.pdf" className="btn-secondary">
+              Hiring? View my resume
+            </Link>
+          </div>
+        </div>
+
+        <div className="relative order-first mx-auto w-full max-w-[180px] sm:max-w-[280px] lg:order-none lg:max-w-[360px]">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-t-full bg-blush sm:translate-x-5 sm:translate-y-5"
+          />
+          <div className="relative aspect-[4/5] overflow-hidden rounded-t-full bg-white">
+            <Image
+              src="/headshot.jpg"
+              alt="Maria Sanchez Otero"
+              fill
+              sizes="(min-width: 1024px) 360px, 300px"
+              className="object-cover object-[50%_30%]"
+              priority
+            />
+          </div>
         </div>
       </section>
 
-      <section className="section-rule">
-        <div className="container-page flex flex-col divide-y divide-rule sm:flex-row sm:divide-x sm:divide-y-0">
+      <section className="bg-ink text-paper">
+        <div className="container-page flex flex-col divide-y divide-paper/15 sm:flex-row sm:divide-x sm:divide-y-0">
           {PROOF_POINTS.map((point) => (
             <div
               key={point.label}
               className="flex flex-1 flex-col gap-2 py-8 sm:px-10 sm:py-14 sm:first:pl-0 sm:last:pr-0"
             >
-              <span className="font-serif text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+              <span className="font-serif text-4xl font-medium italic tracking-tight text-blush sm:text-5xl">
                 {point.figure}
               </span>
-              <span className="text-base text-graphite">{point.label}</span>
+              <span className="text-base text-paper/75">{point.label}</span>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="section-rule section-y">
+      <section className="section-y">
         <div className="container-page">
           <h2 className="mb-14 text-2xl sm:text-3xl">
             Three things most small teams need connected

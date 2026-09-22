@@ -9,13 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#FAF6EF",
-        "paper-tint": "#F3EBDD",
-        ink: "#3A2438",
-        graphite: "#685660",
-        rule: "#DDCFC8",
-        signal: "#556B4A",
-        wine: "#8B3A4A",
+        paper: "#F8F5F0",
+        "paper-tint": "#EFE9E1",
+        ink: "#1B1418",
+        graphite: "#554B50",
+        rule: "#DDD5CE",
+        signal: "#8E1F4F",
+        blush: "#E9D3D6",
+        wine: "#B42318",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],

@@ -49,7 +49,7 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-sm bg-ink px-6 py-3 text-sm font-medium text-paper transition-opacity hover:opacity-80;
+    @apply inline-flex items-center justify-center rounded-sm bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-signal;
   }
 
   .btn-secondary {
@@ -107,6 +107,15 @@
   line-height: 1;
   font-weight: 500;
   letter-spacing: -0.01em;
+}
+
+/* Hero headline shares its row with the photo, so it tops out smaller than .display */
+.display-hero {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 1rem + 3.3vw, 4rem);
+  line-height: 1.02;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
 .display-sm {
