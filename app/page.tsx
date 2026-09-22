@@ -43,9 +43,9 @@ export default function HomePage() {
             </span>
           </p>
           <h1 className="display-hero text-ink">
-            <span className="hero-line block">Marketing that <strong className="whitespace-nowrap font-bold text-signal">performs.</strong></span>
-            <span className="hero-line block">Data that <strong className="whitespace-nowrap font-bold text-signal">proves it.</strong></span>
-            <span className="hero-line block">Systems that <strong className="whitespace-nowrap font-bold text-signal">keep it running.</strong></span>
+            <span className="hero-line block">Marketing that <strong className="whitespace-nowrap font-bold text-rose-deep">performs.</strong></span>
+            <span className="hero-line block">Data that <strong className="whitespace-nowrap font-bold text-rose-deep">proves it.</strong></span>
+            <span className="hero-line block">Systems that <strong className="whitespace-nowrap font-bold text-rose-deep">keep it running.</strong></span>
           </h1>
           <p className="max-w-[50ch] text-lg text-graphite">
             I'm a growth marketer who sees the whole engine, from the creative to the dashboard to

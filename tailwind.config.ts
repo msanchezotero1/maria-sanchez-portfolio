@@ -18,6 +18,8 @@ const config: Config = {
         signal: "#5A7039",
         sage: "#839958",
         rose: "#D3968C",
+        // Rosy brown deepened to pass 3:1 contrast for large headline text
+        "rose-deep": "#B06C60",
         wine: "#A12A1E",
       },
       fontFamily: {
