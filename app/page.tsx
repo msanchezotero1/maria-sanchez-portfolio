@@ -43,9 +43,9 @@ export default function HomePage() {
             </span>
           </p>
           <h1 className="display-hero text-ink">
-            <span className="hero-line block">Marketing that <em className="whitespace-nowrap font-medium italic text-signal">performs.</em></span>
-            <span className="hero-line block">Data that <em className="whitespace-nowrap font-medium italic text-signal">proves it.</em></span>
-            <span className="hero-line block">Systems that <em className="whitespace-nowrap font-medium italic text-signal">keep it running.</em></span>
+            <span className="hero-line block">Marketing that <strong className="whitespace-nowrap font-bold text-signal">performs.</strong></span>
+            <span className="hero-line block">Data that <strong className="whitespace-nowrap font-bold text-signal">proves it.</strong></span>
+            <span className="hero-line block">Systems that <strong className="whitespace-nowrap font-bold text-signal">keep it running.</strong></span>
           </h1>
           <p className="max-w-[50ch] text-lg text-graphite">
             I'm a growth marketer who sees the whole engine, from the creative to the dashboard to
@@ -86,7 +86,7 @@ export default function HomePage() {
               key={point.label}
               className="flex flex-1 flex-col gap-2 py-8 sm:px-10 sm:py-14 sm:first:pl-0 sm:last:pr-0"
             >
-              <span className="font-serif text-4xl font-medium italic tracking-tight text-rose sm:text-5xl">
+              <span className="font-serif text-4xl font-bold tracking-tight text-rose sm:text-5xl">
                 {point.figure}
               </span>
               <span className="text-base text-paper">{point.label}</span>

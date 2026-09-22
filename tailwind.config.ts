@@ -15,7 +15,7 @@ const config: Config = {
         ink: "#0A3323",
         graphite: "#2F4A3E",
         rule: "#DDD6C8",
-        signal: "#00708A",
+        signal: "#5A7039",
         sage: "#839958",
         rose: "#D3968C",
         wine: "#A12A1E",
