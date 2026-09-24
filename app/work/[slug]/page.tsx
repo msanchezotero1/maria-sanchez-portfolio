@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getAllCaseStudies, getCaseStudy, getCaseStudySlugs } from "@/lib/case-studies";
+import CtaBanner from "@/components/CtaBanner";
+import SectionLabel from "@/components/SectionLabel";
+import Tag from "@/components/Tag";
 
 export function generateStaticParams() {
   return getCaseStudySlugs().map((slug) => ({ slug }));
@@ -35,7 +38,7 @@ const mdxComponents = {
     <ol className="mb-4 ml-5 list-decimal space-y-1.5 text-graphite" {...props} />
   ),
   blockquote: (props: React.ComponentProps<"blockquote">) => (
-    <blockquote className="mb-4 border-l-2 border-ink py-2 pl-4 italic text-ink" {...props} />
+    <blockquote className="mb-6 border-l-4 border-signal bg-white py-4 pl-5 pr-4 italic text-ink" {...props} />
   ),
   a: (props: React.ComponentProps<"a">) => (
     <a
@@ -83,67 +86,75 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
     .join(", ");
 
   return (
-    <article className="container-page max-w-3xl py-20 sm:py-28 lg:py-36">
-      <Link href="/work" className="link-inline">
-        &larr; All case studies
-      </Link>
+    <>
+      <article className="container-page max-w-3xl py-16 sm:py-24">
+        <Link href="/work" className="link-inline">
+          &larr; All case studies
+        </Link>
 
-      <div className="mt-6 flex flex-col gap-4 border-b border-rule pb-10">
-        <span className="text-sm text-graphite">{frontmatter.category}</span>
-        <h1 className="text-3xl sm:text-4xl">{frontmatter.title}</h1>
-        <p className="text-lg text-graphite">{frontmatter.summary}</p>
-        <p className="text-sm font-medium text-graphite">{metaLine}</p>
+        <div className="mt-8 flex flex-col gap-4 border-b border-rule pb-10">
+          <SectionLabel className="mb-0">{frontmatter.category}</SectionLabel>
+          <h1 className="text-3xl sm:text-4xl">{frontmatter.title}</h1>
+          <p className="text-lg text-graphite">{frontmatter.summary}</p>
+          <p className="text-sm font-medium text-graphite">{metaLine}</p>
 
-        {frontmatter.tags && frontmatter.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 pt-1">
-            {frontmatter.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-rule px-3 py-1 text-xs font-medium text-graphite"
-              >
-                {tag}
-              </span>
+          {frontmatter.tags && frontmatter.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 pt-1">
+              {frontmatter.tags.map((tag) => (
+                <Tag key={tag}>{tag}</Tag>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {frontmatter.highlights && frontmatter.highlights.length > 0 && (
+          <div className="grid gap-4 border-b border-rule py-10 sm:grid-cols-3">
+            {frontmatter.highlights.map((highlight, i) => (
+              <div key={i} className="rounded-sm border-t-4 border-signal bg-sky p-5 text-sm text-ink">
+                {isMetric(highlight) ? (
+                  <>
+                    <p className="text-xs font-bold uppercase tracking-[0.12em] text-ink">
+                      {highlight.label}
+                    </p>
+                    <p className="mt-2 font-serif text-2xl font-bold">{highlight.value}</p>
+                  </>
+                ) : (
+                  highlight
+                )}
+              </div>
             ))}
           </div>
         )}
-      </div>
 
-      {frontmatter.highlights && frontmatter.highlights.length > 0 && (
-        <div className="grid gap-4 border-b border-rule py-10 sm:grid-cols-3">
-          {frontmatter.highlights.map((highlight, i) => (
-            <div key={i} className="rounded-md border border-rule p-4 text-sm text-ink">
-              {isMetric(highlight) ? (
-                <>
-                  <p className="text-xs font-semibold text-graphite">{highlight.label}</p>
-                  <p className="mt-1 text-base font-medium">{highlight.value}</p>
-                </>
-              ) : (
-                highlight
-              )}
-            </div>
-          ))}
+        <div className="pt-10">
+          <MDXRemote
+            source={content}
+            components={mdxComponents}
+            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+          />
         </div>
-      )}
 
-      <div className="pt-10">
-        <MDXRemote
-          source={content}
-          components={mdxComponents}
-          options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
-        />
-      </div>
-
-      {next && next.slug !== params.slug && (
-        <div className="mt-16 border-t border-rule pt-8">
-          <p className="mb-2 text-sm text-graphite">Next case study</p>
+        {next && next.slug !== params.slug && (
           <Link
             href={`/work/${next.slug}`}
-            className="text-lg font-medium text-ink transition-colors hover:text-signal"
+            className="group mt-16 flex flex-col gap-2 rounded-sm border border-rule border-t-4 border-t-signal bg-white p-7 transition-colors hover:border-ink hover:border-t-signal"
           >
-            {next.frontmatter.title}
+            <span className="text-xs font-bold uppercase tracking-[0.12em] text-ink">
+              Next case study &rarr;
+            </span>
+            <span className="font-serif text-2xl font-bold text-ink decoration-signal decoration-2 underline-offset-4 group-hover:underline">
+              {next.frontmatter.title}
+            </span>
           </Link>
-        </div>
-      )}
-    </article>
+        )}
+      </article>
+
+      <CtaBanner
+        title="Want results like these?"
+        body="Tell me about your team and what you're trying to move."
+        primary={{ label: "Start a conversation", href: "/contact" }}
+        secondary={{ label: "All case studies", href: "/work" }}
+      />
+    </>
   );
 }

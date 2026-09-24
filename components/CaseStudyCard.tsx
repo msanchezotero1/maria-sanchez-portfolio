@@ -19,7 +19,7 @@ export default function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
             {frontmatter.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full bg-sky px-2.5 py-0.5 text-xs font-medium text-ink"
+                className="rounded-full bg-sky px-3 py-1 text-xs font-medium text-ink"
               >
                 {tag}
               </span>

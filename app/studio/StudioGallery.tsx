@@ -29,16 +29,17 @@ export default function StudioGallery({
 
   return (
     <>
-      <div className="flex flex-wrap gap-6 border-b border-rule pb-8">
+      <div className="flex flex-wrap gap-3 border-b border-rule pb-8">
         {FILTERS.map((f) => (
           <button
             key={f.key}
             type="button"
             onClick={() => setFilter(f.key)}
-            className={`text-sm font-medium transition-colors ${
+            aria-pressed={filter === f.key}
+            className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
               filter === f.key
-                ? "text-ink underline underline-offset-4"
-                : "text-graphite hover:text-ink"
+                ? "border-ink bg-ink text-white"
+                : "border-rule bg-white text-ink hover:border-ink"
             }`}
           >
             {f.label}

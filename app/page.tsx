@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { getAllCaseStudies } from "@/lib/case-studies";
 import CaseStudyCard from "@/components/CaseStudyCard";
+import CtaBanner from "@/components/CtaBanner";
+import SectionLabel from "@/components/SectionLabel";
 
 export const metadata: Metadata = {
   title: {
@@ -25,15 +27,6 @@ const PILLARS_PREVIEW = [
 ];
 
 const FEATURED_SLUGS = ["cpl-optimization", "pipeline-reporting-automation", "ai-comment-automation"];
-
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-ink">
-      <span aria-hidden="true" className="h-0.5 w-8 bg-signal" />
-      {children}
-    </p>
-  );
-}
 
 export default function HomePage() {
   const allCaseStudies = getAllCaseStudies();
@@ -145,29 +138,12 @@ export default function HomePage() {
         </section>
       )}
 
-      <section className="section-y bg-ink">
-        <div className="container-page flex flex-col items-start gap-8">
-          <span aria-hidden="true" className="h-1 w-12 bg-sky" />
-          <h2 className="max-w-2xl text-3xl tracking-tight text-white sm:text-4xl">
-            Need someone to connect the dots?
-          </h2>
-          <p className="max-w-xl text-lg text-sky">
-            Whether you're a small team that needs marketing, data, and systems working together,
-            or you're hiring for a growth role, let's talk.
-          </p>
-          <div className="flex flex-wrap items-center gap-6">
-            <Link href="/contact" className="btn-light">
-              Start a conversation
-            </Link>
-            <Link
-              href="/resume.pdf"
-              className="text-sm font-medium text-white decoration-sky decoration-2 underline-offset-4 hover:underline"
-            >
-              View my resume
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaBanner
+        title="Need someone to connect the dots?"
+        body="Whether you're a small team that needs marketing, data, and systems working together, or you're hiring for a growth role, let's talk."
+        primary={{ label: "Start a conversation", href: "/contact" }}
+        secondary={{ label: "View my resume", href: "/resume.pdf" }}
+      />
     </>
   );
 }

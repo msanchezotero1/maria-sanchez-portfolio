@@ -1,29 +1,49 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import CtaBanner from "@/components/CtaBanner";
+import SectionLabel from "@/components/SectionLabel";
+import Tag from "@/components/Tag";
 
 export const metadata: Metadata = {
   title: "About",
   description: "About Maria Sanchez Otero, marketing and CRM analytics specialist.",
 };
 
+const TOOLS = [
+  "HubSpot",
+  "Salesforce",
+  "Python",
+  "SQL",
+  "Looker Studio",
+  "Power BI",
+  "GA4",
+  "Meta Ads",
+];
+
 export default function AboutPage() {
   return (
-    <section className="container-page py-20 sm:py-28 lg:py-36">
-      <div className="grid gap-12 sm:grid-cols-[280px_1fr] sm:items-start">
-        <div className="relative aspect-square w-full max-w-xs overflow-hidden rounded-md bg-rule sm:max-w-none">
-          <Image
-            src="/headshot.jpg"
-            alt="Maria Sanchez Otero"
-            fill
-            sizes="(min-width: 640px) 280px, 320px"
-            className="object-cover"
-            priority
+    <>
+      <section className="container-page grid items-start gap-12 py-16 sm:py-24 lg:grid-cols-[320px_1fr] lg:gap-20 lg:py-28">
+        <div className="relative mx-auto w-full max-w-[220px] sm:max-w-[280px] lg:max-w-none">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-sm bg-sky sm:translate-x-5 sm:translate-y-5"
           />
+          <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-paper-tint">
+            <Image
+              src="/headshot-navy.jpg"
+              alt="Maria Sanchez Otero"
+              fill
+              sizes="(min-width: 1024px) 320px, 280px"
+              className="object-cover object-[50%_30%]"
+              priority
+            />
+          </div>
         </div>
 
         <div className="flex flex-col gap-6">
-          <h1 className="text-3xl sm:text-4xl">Maria Sanchez Otero</h1>
+          <SectionLabel className="mb-0">About</SectionLabel>
+          <h1 className="display-sm text-ink">Maria Sanchez Otero</h1>
 
           <p className="text-xl leading-relaxed text-ink">
             I build the analytics and systems layer behind marketing and revenue teams.
@@ -46,24 +66,47 @@ export default function AboutPage() {
               works around. I like finding it, quantifying it, and turning it into
               something a team can act on.
             </p>
-            <p>
-              I hold an MS in Business Analytics from Babson College and a BBA in
-              Marketing from UT San Antonio. I work in HubSpot, Salesforce, Python,
-              SQL, Looker Studio, Power BI, GA4, and Meta Ads, though the tools matter
-              less than knowing which question is worth answering.
-            </p>
           </div>
-
-          <p className="border-t border-rule pt-6 text-sm text-graphite">
-            Originally from Cali, Colombia. Currently based in Boston. I work in
-            English and Spanish.
-          </p>
-
-          <Link href="/contact" className="btn-primary mt-2 w-fit">
-            Get in touch
-          </Link>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className="section-y bg-sky">
+        <div className="container-page">
+          <SectionLabel>Quick facts</SectionLabel>
+          <div className="grid gap-6 sm:grid-cols-3">
+            <div className="flex flex-col gap-3 rounded-sm border-t-4 border-signal bg-white p-7">
+              <h2 className="text-xl text-ink">Education</h2>
+              <p className="text-base text-graphite">MS in Business Analytics, Babson College</p>
+              <p className="text-base text-graphite">BBA in Marketing, UT San Antonio</p>
+            </div>
+            <div className="flex flex-col gap-3 rounded-sm border-t-4 border-signal bg-white p-7">
+              <h2 className="text-xl text-ink">Tools</h2>
+              <div className="flex flex-wrap gap-2">
+                {TOOLS.map((tool) => (
+                  <Tag key={tool}>{tool}</Tag>
+                ))}
+              </div>
+              <p className="text-sm text-graphite">
+                Though the tools matter less than knowing which question is worth answering.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3 rounded-sm border-t-4 border-signal bg-white p-7">
+              <h2 className="text-xl text-ink">Based in</h2>
+              <p className="text-base text-graphite">
+                Originally from Cali, Colombia. Currently based in Boston.
+              </p>
+              <p className="text-base text-graphite">I work in English and Spanish.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <CtaBanner
+        title="Let's work together"
+        body="Whether it's a project, fractional support, or a full-time role, I'd love to hear what you're working on."
+        primary={{ label: "Get in touch", href: "/contact" }}
+        secondary={{ label: "View my resume", href: "/resume.pdf" }}
+      />
+    </>
   );
 }
