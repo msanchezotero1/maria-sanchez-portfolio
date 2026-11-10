@@ -3,21 +3,32 @@
 @tailwind utilities;
 
 @layer base {
+  /* Brand tokens. RGB channels so Tailwind can apply opacity; hex alongside. */
+  :root {
+    --color-cream: 246 241 232; /* #F6F1E8 page background */
+    --color-paper: 251 248 242; /* #FBF8F2 cards, tiles, form fields */
+    --color-ink: 26 22 21; /* #1A1615 primary text, headlines */
+    --color-ink-muted: 107 97 90; /* #6B615A supporting text, nav, captions */
+    --color-cherry: 110 30 42; /* #6E1E2A brand: buttons, accents, links */
+    --color-cherry-deep: 82 21 32; /* #521520 cherry hover/pressed */
+    --color-blush: 234 219 211; /* #EADBD3 metric strip, tags, quotes */
+    --color-sand: 217 199 176; /* #D9C7B0 decorative frames */
+    --color-hairline: 226 215 199; /* #E2D7C7 1px borders and dividers */
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-paper text-ink antialiased;
-    font-size: 17px;
-    line-height: 1.6;
+    @apply bg-cream font-sans text-base text-ink antialiased;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-serif font-bold tracking-tight text-ink;
+    @apply font-display font-medium normal-case text-ink;
   }
 
   p {
@@ -30,47 +41,80 @@
   }
 
   :focus-visible {
-    outline: 2px solid theme("colors.signal");
+    outline: 2px solid rgb(var(--color-cherry));
     outline-offset: 2px;
   }
 }
 
 @layer components {
   .container-page {
-    @apply mx-auto w-full max-w-content px-6 sm:px-10 lg:px-16;
+    @apply mx-auto w-full px-5 sm:px-10;
+    max-width: calc(1120px + 5rem);
   }
 
   .section-y {
-    @apply py-20 sm:py-28 lg:py-36;
+    @apply py-16 lg:py-24;
   }
 
   .section-rule {
-    @apply border-t border-rule;
+    @apply border-t border-hairline;
+  }
+
+  /* Type scale */
+  .heading-1 {
+    @apply font-display text-hero-mobile font-medium text-ink lg:text-hero;
+  }
+
+  .heading-2 {
+    @apply font-display text-h2-mobile font-medium text-ink lg:text-h2;
+  }
+
+  .heading-3 {
+    @apply font-display text-h3 font-medium text-ink;
+  }
+
+  .eyebrow {
+    @apply font-sans text-xs font-medium uppercase tracking-[0.12em] text-ink-muted;
+  }
+
+  /* Buttons and links (see components/Button.tsx) */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-btn border font-sans text-sm font-medium transition-colors duration-150;
+    padding: 14px 24px;
+  }
+
+  .btn-sm {
+    @apply text-[13px];
+    padding: 9px 16px;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-sm bg-signal px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-ink;
-  }
-
-  .btn-outline {
-    @apply inline-flex items-center justify-center rounded-sm border border-ink px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-white;
-  }
-
-  /* For navy banners */
-  .btn-light {
-    @apply inline-flex items-center justify-center rounded-sm bg-sky px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-white;
+    @apply border-cherry bg-cherry text-cream hover:border-cherry-deep hover:bg-cherry-deep active:bg-cherry-deep;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center text-sm font-medium text-ink decoration-signal decoration-2 underline-offset-4 hover:underline;
+    @apply border-ink bg-transparent text-ink hover:bg-ink hover:text-cream;
   }
 
-  .link-inline {
-    @apply text-sm font-medium text-ink decoration-signal decoration-2 underline-offset-4 hover:underline;
+  .link {
+    @apply font-medium text-cherry underline decoration-1 underline-offset-4 transition-colors duration-150 hover:text-cherry-deep;
   }
 
   .card {
-    @apply border border-rule bg-paper-tint rounded-md p-6;
+    @apply rounded-card border border-hairline bg-paper p-8 transition-colors duration-150;
+  }
+
+  .card-hover {
+    @apply hover:border-ink-muted;
+  }
+
+  .field {
+    @apply rounded-btn border border-hairline bg-paper px-4 py-3 text-sm text-ink transition-colors placeholder:text-ink-muted/70 focus:border-cherry focus:outline-none;
+  }
+
+  /* On the inverted (ink) closing section a cherry ring would disappear */
+  .on-ink :focus-visible {
+    outline-color: rgb(var(--color-cream));
   }
 }
 
@@ -108,29 +152,4 @@
   .hero-line {
     opacity: 1;
   }
-}
-
-.display {
-  font-family: var(--font-serif);
-  font-size: clamp(2.75rem, 1.1rem + 6vw, 6.5rem);
-  line-height: 1.02;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-/* Hero headline shares its row with the photo, so it tops out smaller than .display */
-.display-hero {
-  font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 1rem + 3.3vw, 4rem);
-  line-height: 1.06;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-.display-sm {
-  font-family: var(--font-serif);
-  font-size: clamp(2.25rem, 1rem + 4.5vw, 4.5rem);
-  line-height: 1.06;
-  font-weight: 700;
-  letter-spacing: -0.01em;
 }

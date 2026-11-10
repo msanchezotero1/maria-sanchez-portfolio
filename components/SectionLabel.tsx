@@ -1,3 +1,4 @@
+// Eyebrow label above section headlines.
 export default function SectionLabel({
   children,
   className = "",
@@ -5,12 +6,5 @@ export default function SectionLabel({
   children: React.ReactNode;
   className?: string;
 }) {
-  return (
-    <p
-      className={`mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-ink ${className}`}
-    >
-      <span aria-hidden="true" className="h-0.5 w-8 bg-signal" />
-      {children}
-    </p>
-  );
+  return <p className={`eyebrow mb-4 ${className}`}>{children}</p>;
 }

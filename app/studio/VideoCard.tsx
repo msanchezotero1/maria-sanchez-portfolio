@@ -15,7 +15,7 @@ export default function VideoCard({
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="relative w-full overflow-hidden rounded-md bg-rule" style={{ aspectRatio: "9 / 16" }}>
+      <div className="relative w-full overflow-hidden rounded-card bg-hairline" style={{ aspectRatio: "9 / 16" }}>
         {playing ? (
           <video
             src={video.src}
@@ -52,7 +52,7 @@ export default function VideoCard({
       </div>
       <div className="flex flex-col gap-0.5">
         <p className="text-sm text-ink">{video.goal}</p>
-        <p className="text-sm text-graphite">
+        <p className="text-sm text-ink-muted">
           {video.format} in {video.tool}, {video.language}
         </p>
       </div>

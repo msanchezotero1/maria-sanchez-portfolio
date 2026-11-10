@@ -29,17 +29,17 @@ export default function StudioGallery({
 
   return (
     <>
-      <div className="flex flex-wrap gap-3 border-b border-rule pb-8">
+      <div className="flex flex-wrap gap-3 border-b border-hairline pb-8">
         {FILTERS.map((f) => (
           <button
             key={f.key}
             type="button"
             onClick={() => setFilter(f.key)}
             aria-pressed={filter === f.key}
-            className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+            className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-150 ${
               filter === f.key
-                ? "border-ink bg-ink text-white"
-                : "border-rule bg-white text-ink hover:border-ink"
+                ? "border-ink bg-ink text-cream"
+                : "border-hairline bg-paper text-ink hover:border-ink-muted"
             }`}
           >
             {f.label}
@@ -49,7 +49,7 @@ export default function StudioGallery({
 
       {showPosts && (
         <div className="pt-16">
-          <h2 className="mb-10 text-2xl sm:text-3xl">Posts and carousels</h2>
+          <h2 className="heading-2 mb-10">Posts and carousels</h2>
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((post, i) => (
               <PostCard
@@ -64,8 +64,8 @@ export default function StudioGallery({
       )}
 
       {showVideos && (
-        <div className={showPosts ? "mt-20 border-t border-rule pt-16" : "pt-16"}>
-          <h2 className="mb-10 text-2xl sm:text-3xl">Reels and video</h2>
+        <div className={showPosts ? "mt-20 border-t border-hairline pt-16" : "pt-16"}>
+          <h2 className="heading-2 mb-10">Reels and video</h2>
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
             {videos.map((video, i) => (
               <VideoCard key={video.slug} video={video} priority={i < 4} />

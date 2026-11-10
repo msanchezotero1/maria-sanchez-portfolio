@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import CtaBanner from "@/components/CtaBanner";
+import Headshot from "@/components/Headshot";
 import SectionLabel from "@/components/SectionLabel";
 import Tag from "@/components/Tag";
 
@@ -23,33 +23,21 @@ const TOOLS = [
 export default function AboutPage() {
   return (
     <>
-      <section className="container-page grid items-start gap-12 py-16 sm:py-24 lg:grid-cols-[320px_1fr] lg:gap-20 lg:py-28">
-        <div className="relative mx-auto w-full max-w-[220px] sm:max-w-[280px] lg:max-w-none">
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-sm bg-sky sm:translate-x-5 sm:translate-y-5"
-          />
-          <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-paper-tint">
-            <Image
-              src="/headshot-navy.jpg"
-              alt="Maria Sanchez Otero"
-              fill
-              sizes="(min-width: 1024px) 320px, 280px"
-              className="object-cover object-[50%_30%]"
-              priority
-            />
-          </div>
-        </div>
+      <section className="container-page grid items-start gap-12 py-16 lg:grid-cols-[320px_1fr] lg:gap-20 lg:py-24">
+        <Headshot
+          sizes="(min-width: 1024px) 320px, 280px"
+          className="mx-auto w-full max-w-[220px] sm:max-w-[280px] lg:max-w-none"
+        />
 
         <div className="flex flex-col gap-6">
           <SectionLabel className="mb-0">About</SectionLabel>
-          <h1 className="display-sm text-ink">Maria Sanchez Otero</h1>
+          <h1 className="heading-1">Maria Sanchez Otero</h1>
 
-          <p className="text-xl leading-relaxed text-ink">
+          <p className="font-display text-[26px] leading-[1.3] text-ink">
             I build the analytics and systems layer behind marketing and revenue teams.
           </p>
 
-          <div className="flex flex-col gap-4 text-lg leading-relaxed text-graphite">
+          <div className="flex flex-col gap-4 text-ink-muted">
             <p>
               That has looked like different things. Cutting cost per lead by roughly
               90% at a healthcare startup by arguing that our ads were too polished to
@@ -70,32 +58,32 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section-y bg-sky">
+      <section className="section-y section-rule">
         <div className="container-page">
           <SectionLabel>Quick facts</SectionLabel>
           <div className="grid gap-6 sm:grid-cols-3">
-            <div className="flex flex-col gap-3 rounded-sm border-t-4 border-signal bg-white p-7">
-              <h2 className="text-xl text-ink">Education</h2>
-              <p className="text-base text-graphite">MS in Business Analytics, Babson College</p>
-              <p className="text-base text-graphite">BBA in Marketing, UT San Antonio</p>
+            <div className="flex flex-col gap-3 card">
+              <h2 className="heading-3">Education</h2>
+              <p className="text-ink-muted">MS in Business Analytics, Babson College</p>
+              <p className="text-ink-muted">BBA in Marketing, UT San Antonio</p>
             </div>
-            <div className="flex flex-col gap-3 rounded-sm border-t-4 border-signal bg-white p-7">
-              <h2 className="text-xl text-ink">Tools</h2>
+            <div className="flex flex-col gap-3 card">
+              <h2 className="heading-3">Tools</h2>
               <div className="flex flex-wrap gap-2">
                 {TOOLS.map((tool) => (
                   <Tag key={tool}>{tool}</Tag>
                 ))}
               </div>
-              <p className="text-sm text-graphite">
+              <p className="text-sm text-ink-muted">
                 Though the tools matter less than knowing which question is worth answering.
               </p>
             </div>
-            <div className="flex flex-col gap-3 rounded-sm border-t-4 border-signal bg-white p-7">
-              <h2 className="text-xl text-ink">Based in</h2>
-              <p className="text-base text-graphite">
+            <div className="flex flex-col gap-3 card">
+              <h2 className="heading-3">Based in</h2>
+              <p className="text-ink-muted">
                 Originally from Cali, Colombia. Currently based in Boston.
               </p>
-              <p className="text-base text-graphite">I work in English and Spanish.</p>
+              <p className="text-ink-muted">I work in English and Spanish.</p>
             </div>
           </div>
         </div>

@@ -1,22 +1,30 @@
 import type { Metadata } from "next";
-import { Lora, Playfair_Display } from "next/font/google";
+import { Cormorant_Garamond, IBM_Plex_Mono, Inter } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
 import "./globals.css";
 
-// Body text. Both fonts are variable, so every weight is available.
-const lora = Lora({
+// Headlines and wordmark.
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-display",
+  weight: ["400", "500"],
   style: ["normal", "italic"],
 });
 
-// Headlines and wordmark.
-const playfair = Playfair_Display({
+// Body and UI.
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-serif",
-  style: ["normal", "italic"],
+  variable: "--font-sans",
+  weight: ["400", "500"],
+});
+
+// Metrics, stats and data labels.
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -34,8 +42,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${lora.variable} ${playfair.variable}`}>
-      <body className="flex min-h-screen flex-col bg-paper font-sans text-ink">
+    <html lang="en" className={`${cormorant.variable} ${inter.variable} ${plexMono.variable}`}>
+      <body className="flex min-h-screen flex-col bg-cream font-sans text-ink">
         {/*
           GA4 placeholder — see components/Analytics.tsx for setup instructions.
           Once NEXT_PUBLIC_GA_MEASUREMENT_ID is set, this loads the gtag.js

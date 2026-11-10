@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Button from "@/components/Button";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -49,8 +50,8 @@ export default function ContactForm() {
   if (status === "success") {
     return (
       <div className="card text-center">
-        <h2 className="mb-2 text-lg text-ink">Thanks for reaching out!</h2>
-        <p className="text-sm text-graphite">
+        <h2 className="heading-3 mb-2">Thanks for reaching out!</h2>
+        <p className="text-sm text-ink-muted">
           Your message is on its way. I'll get back to you soon.
         </p>
       </div>
@@ -75,7 +76,7 @@ export default function ContactForm() {
           type="text"
           required
           placeholder="Your name"
-          className="rounded-sm border border-rule bg-paper px-4 py-3 text-sm text-ink placeholder:text-graphite/60 focus:border-signal focus:outline-none"
+          className="field"
         />
       </div>
 
@@ -89,7 +90,7 @@ export default function ContactForm() {
           type="email"
           required
           placeholder="you@company.com"
-          className="rounded-sm border border-rule bg-paper px-4 py-3 text-sm text-ink placeholder:text-graphite/60 focus:border-signal focus:outline-none"
+          className="field"
         />
       </div>
 
@@ -103,19 +104,19 @@ export default function ContactForm() {
           rows={5}
           required
           placeholder="Tell me a bit about your project..."
-          className="resize-none rounded-sm border border-rule bg-paper px-4 py-3 text-sm text-ink placeholder:text-graphite/60 focus:border-signal focus:outline-none"
+          className="field resize-none"
         />
       </div>
 
       {status === "error" && (
-        <p className="text-sm text-wine" role="alert">
+        <p className="text-sm text-cherry" role="alert">
           {errorMessage}
         </p>
       )}
 
-      <button type="submit" disabled={status === "loading"} className="btn-primary w-full disabled:opacity-60">
+      <Button type="submit" disabled={status === "loading"} className="w-full disabled:opacity-60">
         {status === "loading" ? "Sending..." : "Send message"}
-      </button>
+      </Button>
     </form>
   );
 }

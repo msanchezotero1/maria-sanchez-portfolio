@@ -16,18 +16,18 @@ export default function WorkPage() {
 
   return (
     <>
-      <section className="container-page pb-8 pt-16 sm:pt-24">
+      <section className="container-page pb-8 pt-16 lg:pt-24">
         <SectionLabel>Work</SectionLabel>
-        <h1 className="display-sm max-w-3xl text-ink">Case studies</h1>
-        <p className="mt-6 max-w-2xl text-lg text-graphite">
+        <h1 className="heading-1 max-w-3xl">Case studies</h1>
+        <p className="mt-6 max-w-2xl text-ink-muted">
           Real projects across creative, analytics, and systems, and the numbers they moved.
         </p>
-        <p className="mt-2 text-sm text-graphite">
+        <p className="mt-2 text-sm text-ink-muted">
           Client and employer names are kept confidential.
         </p>
       </section>
 
-      <section className="container-page flex flex-col gap-16 pb-20 pt-8 sm:pb-28">
+      <section className="container-page flex flex-col gap-16 pb-16 pt-8 lg:pb-24">
         {PILLARS.map((pillar, i) => {
           const pillarCaseStudies = caseStudies.filter(
             (caseStudy) => caseStudy.frontmatter.category === pillar
@@ -35,12 +35,12 @@ export default function WorkPage() {
           if (pillarCaseStudies.length === 0) return null;
 
           return (
-            <div key={pillar} className="flex flex-col gap-2 border-t-4 border-signal pt-8">
-              <h2 className="mb-2 flex items-baseline gap-4 text-2xl sm:text-3xl">
-                <span className="font-serif text-base font-bold text-signal">0{i + 1}</span>
+            <div key={pillar} className="flex flex-col gap-2 border-t border-hairline pt-10">
+              <h2 className="heading-2 mb-6 flex items-baseline gap-4">
+                <span className="font-mono text-base font-medium text-cherry">0{i + 1}</span>
                 {pillar}
               </h2>
-              <div className="divide-y divide-rule">
+              <div className="flex flex-col gap-6">
                 {pillarCaseStudies.map((caseStudy) => (
                   <CaseStudyCard key={caseStudy.slug} caseStudy={caseStudy} />
                 ))}

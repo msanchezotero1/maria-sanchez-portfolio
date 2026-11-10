@@ -17,7 +17,7 @@ export default function PostCard({
   return (
     <button type="button" onClick={onOpen} className="group flex flex-col gap-3 text-left">
       <div
-        className="relative w-full overflow-hidden rounded-md bg-rule"
+        className="relative w-full overflow-hidden rounded-card bg-hairline"
         style={{ aspectRatio: `${post.width} / ${post.height}` }}
       >
         <Image
@@ -29,14 +29,14 @@ export default function PostCard({
           priority={priority}
         />
         {post.format === "Carousel" && (
-          <span className="absolute bottom-2 right-2 rounded-full border border-rule bg-paper px-2.5 py-0.5 text-xs text-graphite">
+          <span className="absolute bottom-2 right-2 rounded-full border border-hairline bg-paper px-2.5 py-0.5 text-xs text-ink-muted">
             {post.media.length} slides
           </span>
         )}
       </div>
       <div className="flex flex-col gap-0.5">
         <p className="text-sm text-ink">{post.goal}</p>
-        <p className="text-sm text-graphite">
+        <p className="text-sm text-ink-muted">
           {post.format} in {post.tool}, {post.language}
         </p>
       </div>

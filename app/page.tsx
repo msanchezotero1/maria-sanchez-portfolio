@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { getAllCaseStudies } from "@/lib/case-studies";
+import Button, { TextLink } from "@/components/Button";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import CtaBanner from "@/components/CtaBanner";
+import Headshot from "@/components/Headshot";
 import SectionLabel from "@/components/SectionLabel";
 
 export const metadata: Metadata = {
@@ -14,8 +14,9 @@ export const metadata: Metadata = {
     "Growth marketer working across creative, analytics, and CRM systems. Campaigns that perform, data that proves it, systems that keep it running.",
 };
 
+// `accent` renders the figure in cherry. Keep it on the single headline result.
 const PROOF_POINTS = [
-  { figure: "~90%", label: "lower cost per lead" },
+  { figure: "~90%", label: "lower cost per lead", accent: true },
   { figure: "~80%", label: "less manual work with AI automation" },
   { figure: "EN / ES", label: "bilingual across every channel" },
 ];
@@ -36,104 +37,83 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="container-page grid items-center gap-10 pb-20 pt-6 sm:gap-12 sm:pb-28 sm:pt-20 lg:grid-cols-[1fr_360px] lg:gap-16 lg:pb-32 lg:pt-24">
+      <section className="container-page grid items-center gap-12 py-16 lg:grid-cols-[1fr_340px] lg:gap-20 lg:py-24">
         <div className="flex flex-col items-start gap-8">
-          <p className="flex items-center gap-3 text-sm font-medium uppercase tracking-[0.16em] text-graphite">
-            <span aria-hidden="true" className="h-0.5 w-10 bg-signal" />
-            <span>
-              Hi, I'm Maria<span className="hidden sm:inline"> · Growth marketer</span> · EN / ES
-            </span>
+          <p className="eyebrow">
+            Hi, I'm Maria<span className="hidden sm:inline"> · Growth marketer</span> · EN / ES
           </p>
-          <h1 className="display-hero text-ink">
-            <span className="hero-line block">Marketing that <strong className="whitespace-nowrap font-black text-signal">performs.</strong></span>
-            <span className="hero-line block">Data that <strong className="whitespace-nowrap font-black text-signal">proves it.</strong></span>
-            <span className="hero-line block">Systems that <strong className="whitespace-nowrap font-black text-signal">keep it running.</strong></span>
+          <h1 className="heading-1">
+            <span className="hero-line block">Marketing that performs.</span>
+            <span className="hero-line block font-normal italic text-cherry">Data that proves it.</span>
+            <span className="hero-line block">Systems that keep it running.</span>
           </h1>
-          <p className="max-w-[50ch] text-lg text-graphite">
+          <p className="max-w-[50ch] text-ink-muted">
             I'm a growth marketer who sees the whole engine, from the creative to the dashboard to
             the CRM.
           </p>
           <div className="flex flex-wrap items-center gap-6">
-            <Link href="/contact" className="btn-primary">
-              Work with me
-            </Link>
-            <Link href="/resume.pdf" className="btn-secondary">
-              Hiring? View my resume
-            </Link>
+            <Button href="/contact">Work with me</Button>
+            <TextLink href="/resume.pdf">Hiring? View my resume</TextLink>
           </div>
         </div>
 
-        <div className="relative order-first mx-auto w-full max-w-[180px] sm:max-w-[280px] lg:order-none lg:max-w-[360px]">
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-sm bg-sky sm:translate-x-5 sm:translate-y-5"
-          />
-          <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-paper-tint">
-            <Image
-              src="/headshot-navy.jpg"
-              alt="Maria Sanchez Otero"
-              fill
-              sizes="(min-width: 1024px) 360px, 300px"
-              className="object-cover object-[50%_30%]"
-              priority
-            />
-          </div>
-        </div>
+        <Headshot
+          sizes="(min-width: 1024px) 340px, 280px"
+          className="order-first mx-auto w-full max-w-[200px] sm:max-w-[280px] lg:order-none lg:max-w-[340px]"
+        />
       </section>
 
-      <section className="bg-ink text-paper">
-        <div className="container-page flex flex-col divide-y divide-paper/15 sm:flex-row sm:divide-x sm:divide-y-0">
+      <section className="border-y border-hairline bg-blush">
+        <div className="container-page grid grid-cols-1 divide-y divide-ink/10 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {PROOF_POINTS.map((point) => (
             <div
               key={point.label}
-              className="flex flex-1 flex-col gap-2 py-8 sm:px-10 sm:py-14 sm:first:pl-0 sm:last:pr-0"
+              className="flex flex-col gap-2 py-8 sm:px-8 sm:py-10 sm:first:pl-0 sm:last:pr-0"
             >
-              <span className="font-serif text-4xl font-bold tracking-tight text-sky sm:text-5xl">
+              <span
+                className={`font-mono text-metric font-medium ${point.accent ? "text-cherry" : "text-ink"}`}
+              >
                 {point.figure}
               </span>
-              <span className="text-base text-paper/90">{point.label}</span>
+              {/* ink at 75% rather than ink-muted: keeps 12px labels above 4.5:1 on blush */}
+              <span className="font-mono text-xs text-ink/75">{point.label}</span>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="section-y bg-sky">
+      <section className="section-y">
         <div className="container-page">
           <SectionLabel>How I help</SectionLabel>
-          <h2 className="mb-12 text-2xl sm:text-3xl">
-            Three things most small teams need connected
-          </h2>
+          <h2 className="heading-2 mb-12">Three things most small teams need connected</h2>
           <div className="grid gap-6 sm:grid-cols-3">
             {PILLARS_PREVIEW.map((area, i) => (
-              <div
-                key={area.title}
-                className="flex flex-col gap-3 rounded-sm border-t-4 border-signal bg-white p-7"
-              >
-                <span className="font-serif text-sm font-bold text-signal">0{i + 1}</span>
-                <h3 className="text-xl text-ink">{area.title}</h3>
-                <p className="text-base text-graphite">{area.description}</p>
+              <div key={area.title} className="card flex flex-col gap-3">
+                <span className="font-mono text-sm font-medium text-cherry">0{i + 1}</span>
+                <h3 className="heading-3">{area.title}</h3>
+                <p className="text-ink-muted">{area.description}</p>
               </div>
             ))}
           </div>
-          <Link href="/how-i-can-help" className="btn-outline mt-12">
+          <Button href="/how-i-can-help" variant="secondary" className="mt-12">
             See how I work
-          </Link>
+          </Button>
         </div>
       </section>
 
       {featuredCaseStudies.length > 0 && (
-        <section className="section-y">
+        <section className="section-y section-rule">
           <div className="container-page">
             <SectionLabel>Case studies</SectionLabel>
-            <h2 className="mb-6 text-2xl sm:text-3xl">Selected work</h2>
-            <div className="divide-y divide-rule">
+            <h2 className="heading-2 mb-10">Selected work</h2>
+            <div className="flex flex-col gap-6">
               {featuredCaseStudies.map((caseStudy) => (
                 <CaseStudyCard key={caseStudy.slug} caseStudy={caseStudy} />
               ))}
             </div>
-            <Link href="/work" className="btn-outline mt-10">
+            <Button href="/work" variant="secondary" className="mt-10">
               View all case studies
-            </Link>
+            </Button>
           </div>
         </section>
       )}

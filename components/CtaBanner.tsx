@@ -1,8 +1,9 @@
 import Link from "next/link";
+import Button from "@/components/Button";
 
 type CtaLink = { label: string; href: string };
 
-// Full-width navy closing banner used at the bottom of most pages.
+// Inverted (ink) closing section used at the bottom of most pages.
 export default function CtaBanner({
   title,
   body,
@@ -15,19 +16,16 @@ export default function CtaBanner({
   secondary?: CtaLink;
 }) {
   return (
-    <section className="section-y bg-ink">
+    <section className="on-ink section-y bg-ink">
       <div className="container-page flex flex-col items-start gap-8">
-        <span aria-hidden="true" className="h-1 w-12 bg-sky" />
-        <h2 className="max-w-2xl text-3xl tracking-tight text-white sm:text-4xl">{title}</h2>
-        {body && <p className="max-w-xl text-lg text-sky">{body}</p>}
+        <h2 className="heading-2 max-w-2xl text-cream">{title}</h2>
+        {body && <p className="max-w-xl text-cream/80">{body}</p>}
         <div className="flex flex-wrap items-center gap-6">
-          <Link href={primary.href} className="btn-light">
-            {primary.label}
-          </Link>
+          <Button href={primary.href}>{primary.label}</Button>
           {secondary && (
             <Link
               href={secondary.href}
-              className="text-sm font-medium text-white decoration-sky decoration-2 underline-offset-4 hover:underline"
+              className="text-sm font-medium text-cream underline decoration-1 underline-offset-4 transition-colors duration-150 hover:text-blush"
             >
               {secondary.label}
             </Link>

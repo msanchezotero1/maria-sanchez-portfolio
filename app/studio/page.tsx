@@ -33,21 +33,21 @@ const HOW_I_RAN_IT = [
 export default function StudioPage() {
   return (
     <>
-      <section className="container-page flex flex-col items-start pb-16 pt-16 sm:pt-24">
+      <section className="container-page flex flex-col items-start pb-16 pt-16 lg:pt-24">
         <SectionLabel>Studio</SectionLabel>
-        <h1 className="display-sm text-ink">The creative side of the work</h1>
-        <p className="mt-6 max-w-[55ch] text-lg text-graphite">
+        <h1 className="heading-1">The creative side of the work</h1>
+        <p className="mt-6 max-w-[55ch] text-ink-muted">
           I ran social media for a healthcare startup, from planning to design to video.
           Everything here I made myself.
         </p>
       </section>
 
-      <section className="bg-ink text-white">
-        <div className="container-page grid grid-cols-1 divide-y divide-white/15 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
+      <section className="border-y border-hairline bg-blush">
+        <div className="container-page grid grid-cols-1 divide-y divide-ink/10 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
           {HOW_I_RAN_IT.map((item) => (
             <div key={item.title} className="flex flex-col gap-2 py-8 sm:px-8 sm:py-12 lg:first:pl-0 lg:last:pr-0">
-              <h2 className="text-lg text-sky">{item.title}</h2>
-              <p className="text-sm text-white/90">{item.description}</p>
+              <h2 className="font-display text-2xl font-medium text-ink">{item.title}</h2>
+              <p className="text-sm text-ink/75">{item.description}</p>
             </div>
           ))}
         </div>
