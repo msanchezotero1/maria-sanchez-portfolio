@@ -1,30 +1,40 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, IBM_Plex_Mono, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
 import "./globals.css";
 
+// Fonts are self-hosted from app/fonts (latin subset, from Fontsource, SIL OFL)
+// so builds never depend on fetching Google Fonts.
+
 // Headlines and wordmark.
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
+const cormorant = localFont({
   variable: "--font-display",
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
+  src: [
+    { path: "./fonts/cormorant-garamond-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/cormorant-garamond-latin-400-italic.woff2", weight: "400", style: "italic" },
+    { path: "./fonts/cormorant-garamond-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/cormorant-garamond-latin-500-italic.woff2", weight: "500", style: "italic" },
+  ],
 });
 
 // Body and UI.
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
   variable: "--font-sans",
-  weight: ["400", "500"],
+  src: [
+    { path: "./fonts/inter-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/inter-latin-500-normal.woff2", weight: "500", style: "normal" },
+  ],
 });
 
 // Metrics, stats and data labels.
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
+const plexMono = localFont({
   variable: "--font-mono",
-  weight: ["400", "500"],
+  src: [
+    { path: "./fonts/ibm-plex-mono-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/ibm-plex-mono-latin-500-normal.woff2", weight: "500", style: "normal" },
+  ],
 });
 
 const SITE_TITLE = "Maria Sanchez Otero | More paying clients for small businesses";
