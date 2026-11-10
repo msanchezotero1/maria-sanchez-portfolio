@@ -27,13 +27,29 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
+const SITE_TITLE = "Maria Sanchez Otero | More paying clients for small businesses";
+const SITE_DESCRIPTION =
+  "Organic video, Meta ads, sales funnels and AI automation that turn attention into paying clients, with a monthly ROI report that shows what every dollar brought back. EN / ES.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://maria-sanchez-portfolio.vercel.app"),
   title: {
-    default: "Maria Sanchez Otero | Growth Marketing, Analytics & Systems",
+    default: SITE_TITLE,
     template: "%s | Maria Sanchez Otero",
   },
-  description:
-    "Growth marketer working across creative, analytics, and CRM systems. Campaigns that perform, data that proves it, systems that keep it running.",
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    siteName: "Maria Sanchez Otero",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({

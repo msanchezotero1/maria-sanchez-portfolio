@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import CtaBanner from "@/components/CtaBanner";
+import ClosingCta from "@/components/ClosingCta";
 import SectionLabel from "@/components/SectionLabel";
 import StudioGallery from "./StudioGallery";
 import { studioPosts, studioVideos } from "@/lib/studio";
 
 export const metadata: Metadata = {
-  title: "Studio",
+  title: "Content",
   description:
-    "Social media design and short-form video for a healthcare startup, across Instagram, Facebook, and TikTok in English and Spanish.",
+    "Short-form video and social content built to work twice: as organic posts and as Meta ads. Created in English and Spanish.",
 };
 
 const HOW_I_RAN_IT = [
@@ -26,7 +26,7 @@ const HOW_I_RAN_IT = [
   {
     title: "Workflow",
     description:
-      "Designed in Canva, edited in CapCut, then scheduled, published, and adjusted based on what performed.",
+      "Strategy → scripts → shoot → edit → publish → measure what converts.",
   },
 ];
 
@@ -34,11 +34,11 @@ export default function StudioPage() {
   return (
     <>
       <section className="container-page flex flex-col items-start pb-16 pt-16 lg:pt-24">
-        <SectionLabel>Studio</SectionLabel>
-        <h1 className="heading-1">The creative side of the work</h1>
+        <SectionLabel>Content</SectionLabel>
+        <h1 className="heading-1">Content</h1>
         <p className="mt-6 max-w-[55ch] text-ink-muted">
-          I ran social media for a healthcare startup, from planning to design to video.
-          Everything here I made myself.
+          Short-form video and social content built to work twice: as organic posts and as Meta
+          ads. Created in English and Spanish.
         </p>
       </section>
 
@@ -59,11 +59,7 @@ export default function StudioPage() {
         </div>
       </section>
 
-      <CtaBanner
-        title="Want to see the numbers behind the creative?"
-        primary={{ label: "See the case studies", href: "/work" }}
-        secondary={{ label: "Get in touch", href: "/contact" }}
-      />
+      <ClosingCta title="Want content like this for your business?" body="" />
     </>
   );
 }

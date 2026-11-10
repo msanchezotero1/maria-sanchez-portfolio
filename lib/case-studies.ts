@@ -14,6 +14,8 @@ export type CaseStudyFrontmatter = {
   client: string;
   category: string;
   summary: string;
+  /** Headline outcome shown first on cards and at the top of the case study, e.g. "$200 → $15 CPL". */
+  metric?: string;
   // A highlight can be a plain string, or a { label, value } metric pair
   // (rendered as a small stat block instead of a sentence).
   highlights?: (string | CaseStudyMetric)[];

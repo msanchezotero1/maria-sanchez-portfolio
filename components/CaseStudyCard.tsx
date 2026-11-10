@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { CaseStudy } from "@/lib/case-studies";
 import Tag from "@/components/Tag";
 
+// Outcome first: the metric leads, then who it was for, then the story.
 export default function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
   const { slug, frontmatter } = caseStudy;
 
@@ -12,7 +13,10 @@ export default function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
       className="card card-hover group flex items-center justify-between gap-8"
     >
       <div className="flex flex-1 flex-col gap-3">
-        <span className="eyebrow">{frontmatter.category}</span>
+        {frontmatter.metric && (
+          <span className="font-mono text-metric font-medium text-cherry">{frontmatter.metric}</span>
+        )}
+        <span className="eyebrow">{frontmatter.client}</span>
         <h3 className="heading-3 transition-colors duration-150 group-hover:text-cherry">
           {frontmatter.title}
         </h3>
@@ -25,8 +29,6 @@ export default function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
             ))}
           </div>
         )}
-
-        <span className="pt-2 text-sm text-ink-muted">{frontmatter.client}</span>
       </div>
 
       {frontmatter.thumbnail && (
