@@ -4,12 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Button from "@/components/Button";
+import { BOOKING_URL } from "@/lib/site";
 
 const LINKS = [
   { href: "/", label: "Home" },
-  { href: "/work", label: "Work" },
-  { href: "/studio", label: "Studio" },
-  { href: "/how-i-can-help", label: "How I can help" },
+  { href: "/services", label: "Services" },
+  { href: "/work", label: "Results" },
+  { href: "/studio", label: "Content" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -46,8 +47,8 @@ export default function Nav() {
           })}
         </nav>
 
-        <Button href="/contact" size="small" className="hidden md:inline-flex">
-          Get in touch
+        <Button href={BOOKING_URL} size="small" className="hidden md:inline-flex">
+          Book a call
         </Button>
 
         <button
@@ -79,6 +80,9 @@ export default function Nav() {
                 {link.label}
               </Link>
             ))}
+            <Button href={BOOKING_URL} size="small" className="mt-2 w-fit">
+              Book a call
+            </Button>
           </div>
         </nav>
       )}

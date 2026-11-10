@@ -103,7 +103,7 @@ export default function ContactForm() {
           name="message"
           rows={5}
           required
-          placeholder="Tell me a bit about your project..."
+          placeholder="Tell me about your business and how clients find you today..."
           className="field resize-none"
         />
       </div>

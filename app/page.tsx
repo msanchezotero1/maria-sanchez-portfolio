@@ -1,33 +1,64 @@
 import type { Metadata } from "next";
 import { getAllCaseStudies } from "@/lib/case-studies";
+import { BOOKING_CTA, BOOKING_URL } from "@/lib/site";
 import Button, { TextLink } from "@/components/Button";
 import CaseStudyCard from "@/components/CaseStudyCard";
-import CtaBanner from "@/components/CtaBanner";
+import ClosingCta from "@/components/ClosingCta";
 import Headshot from "@/components/Headshot";
 import SectionLabel from "@/components/SectionLabel";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Maria Sanchez Otero | Growth Marketing, Analytics & Systems",
+    absolute: "Maria Sanchez Otero | More paying clients for small businesses",
   },
-  description:
-    "Growth marketer working across creative, analytics, and CRM systems. Campaigns that perform, data that proves it, systems that keep it running.",
 };
 
 // `accent` renders the figure in cherry. Keep it on the single headline result.
 const PROOF_POINTS = [
-  { figure: "~90%", label: "lower cost per lead", accent: true },
+  { figure: "$200 → $15", label: "cost per lead on Meta ads", accent: true },
   { figure: "~80%", label: "less manual work with AI automation" },
-  { figure: "EN / ES", label: "bilingual across every channel" },
+  { figure: "EN / ES", label: "bilingual content and campaigns" },
 ];
 
-const PILLARS_PREVIEW = [
-  { title: "Grow", description: "Campaigns and creative that convert." },
-  { title: "Measure", description: "Tracking and dashboards your team actually uses." },
-  { title: "Systemize", description: "CRM and AI automation that runs without you." },
+const SYSTEM_STEPS = [
+  {
+    title: "Attention",
+    description:
+      "Organic short-form videos built on what's going viral in your industry. I write the scripts and direct; you just show up and record.",
+  },
+  {
+    title: "Traffic",
+    description:
+      "Meta ads (Instagram and Facebook) that put your best content in front of the right people, and retarget everyone who already watched.",
+  },
+  {
+    title: "Conversion",
+    description: "A sales funnel and landing page that turn clicks into booked calls, not just likes.",
+  },
+  {
+    title: "Follow-up",
+    description:
+      "AI that replies to every new lead in seconds, so no one books with your competitor because you answered too late.",
+  },
 ];
 
-const FEATURED_SLUGS = ["cpl-optimization", "pipeline-reporting-automation", "ai-comment-automation"];
+const WHY_ME = [
+  {
+    title: "Numbers first",
+    description: "MS in Business Analytics from Babson. I don't report likes, I report revenue.",
+  },
+  {
+    title: "One person, the whole engine",
+    description:
+      "Content, ads, funnel and automation connected, so nothing gets lost between agencies.",
+  },
+  {
+    title: "Bilingual",
+    description: "Content and campaigns in English and Spanish.",
+  },
+];
+
+const FEATURED_SLUGS = ["cpl-optimization", "ai-comment-automation", "pipeline-reporting-automation"];
 
 export default function HomePage() {
   const allCaseStudies = getAllCaseStudies();
@@ -39,21 +70,20 @@ export default function HomePage() {
     <>
       <section className="container-page grid items-center gap-12 py-16 lg:grid-cols-[1fr_340px] lg:gap-20 lg:py-24">
         <div className="flex flex-col items-start gap-8">
-          <p className="eyebrow">
-            Hi, I'm Maria<span className="hidden sm:inline"> · Growth marketer</span> · EN / ES
-          </p>
+          <p className="eyebrow">Growth marketing for small businesses · EN / ES</p>
           <h1 className="heading-1">
-            <span className="hero-line block">Marketing that performs.</span>
-            <span className="hero-line block font-normal italic text-cherry">Data that proves it.</span>
-            <span className="hero-line block">Systems that keep it running.</span>
+            <span className="hero-line block">More paying clients.</span>
+            <span className="hero-line block font-normal italic text-cherry">
+              With the numbers to prove it.
+            </span>
           </h1>
-          <p className="max-w-[50ch] text-ink-muted">
-            I'm a growth marketer who sees the whole engine, from the creative to the dashboard to
-            the CRM.
+          <p className="max-w-[52ch] text-ink-muted">
+            I turn attention into paying customers using organic video, paid ads, sales funnels and
+            AI automation. Then I show you exactly what every dollar brought back.
           </p>
           <div className="flex flex-wrap items-center gap-6">
-            <Button href="/contact">Work with me</Button>
-            <TextLink href="/resume.pdf">Hiring? View my resume</TextLink>
+            <Button href={BOOKING_URL}>{BOOKING_CTA}</Button>
+            <TextLink href="/work">See results</TextLink>
           </div>
         </div>
 
@@ -84,46 +114,83 @@ export default function HomePage() {
 
       <section className="section-y">
         <div className="container-page">
-          <SectionLabel>How I help</SectionLabel>
-          <h2 className="heading-2 mb-12">Three things most small teams need connected</h2>
-          <div className="grid gap-6 sm:grid-cols-3">
-            {PILLARS_PREVIEW.map((area, i) => (
-              <div key={area.title} className="card flex flex-col gap-3">
+          <SectionLabel>The problem</SectionLabel>
+          <h2 className="heading-2 max-w-3xl">
+            You don't need more marketing. You need more clients.
+          </h2>
+          <p className="mt-6 max-w-2xl text-ink-muted">
+            Most small businesses post, boost a few ads, and hope. The views come and go, the DMs
+            pile up, and nobody can tell you what actually brought in revenue. Attention without a
+            system isn't money.
+          </p>
+        </div>
+      </section>
+
+      <section className="section-y section-rule">
+        <div className="container-page">
+          <SectionLabel>How I get you clients</SectionLabel>
+          <h2 className="heading-2 mb-12 max-w-3xl">
+            One system, from first view to booked appointment
+          </h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {SYSTEM_STEPS.map((step, i) => (
+              <div key={step.title} className="card flex flex-col gap-3">
                 <span className="font-mono text-sm font-medium text-cherry">0{i + 1}</span>
-                <h3 className="heading-3">{area.title}</h3>
-                <p className="text-ink-muted">{area.description}</p>
+                <h3 className="heading-3">{step.title}</h3>
+                <p className="text-ink-muted">{step.description}</p>
               </div>
             ))}
           </div>
-          <Button href="/how-i-can-help" variant="secondary" className="mt-12">
-            See how I work
-          </Button>
+          <p className="mt-8 rounded-card bg-blush px-6 py-5 font-medium text-ink">
+            Every month: a simple ROI report. Leads, booked appointments, revenue, and what each
+            dollar brought back.
+          </p>
+        </div>
+      </section>
+
+      <section className="section-y section-rule">
+        <div className="container-page flex flex-col items-start gap-6">
+          <h2 className="heading-2">Do the math</h2>
+          <p className="max-w-2xl text-ink-muted">
+            If a new client is worth $1,000 to you, 2–3 new clients a month pays for everything. The
+            rest is profit.
+          </p>
+          <Button href={BOOKING_URL}>{BOOKING_CTA}</Button>
         </div>
       </section>
 
       {featuredCaseStudies.length > 0 && (
         <section className="section-y section-rule">
           <div className="container-page">
-            <SectionLabel>Case studies</SectionLabel>
-            <h2 className="heading-2 mb-10">Selected work</h2>
+            <SectionLabel>Results</SectionLabel>
+            <h2 className="heading-2 mb-10">Real work, real numbers</h2>
             <div className="flex flex-col gap-6">
               {featuredCaseStudies.map((caseStudy) => (
                 <CaseStudyCard key={caseStudy.slug} caseStudy={caseStudy} />
               ))}
             </div>
             <Button href="/work" variant="secondary" className="mt-10">
-              View all case studies
+              View all results
             </Button>
           </div>
         </section>
       )}
 
-      <CtaBanner
-        title="Need someone to connect the dots?"
-        body="Whether you're a small team that needs marketing, data, and systems working together, or you're hiring for a growth role, let's talk."
-        primary={{ label: "Start a conversation", href: "/contact" }}
-        secondary={{ label: "View my resume", href: "/resume.pdf" }}
-      />
+      <section className="section-y section-rule">
+        <div className="container-page">
+          <h2 className="heading-2 mb-12">Why work with me</h2>
+          <div className="grid gap-6 sm:grid-cols-3">
+            {WHY_ME.map((point) => (
+              <div key={point.title} className="card flex flex-col gap-3">
+                <h3 className="heading-3">{point.title}</h3>
+                <p className="text-ink-muted">{point.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ClosingCta />
     </>
   );
 }

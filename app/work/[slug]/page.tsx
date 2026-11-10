@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getAllCaseStudies, getCaseStudy, getCaseStudySlugs } from "@/lib/case-studies";
-import CtaBanner from "@/components/CtaBanner";
+import ClosingCta from "@/components/ClosingCta";
 import SectionLabel from "@/components/SectionLabel";
 import Tag from "@/components/Tag";
 
@@ -89,11 +89,14 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
     <>
       <article className="container-page max-w-3xl py-16 lg:py-24">
         <Link href="/work" className="link text-sm">
-          &larr; All case studies
+          &larr; All results
         </Link>
 
         <div className="mt-8 flex flex-col gap-4 border-b border-hairline pb-10">
           <SectionLabel className="mb-0">{frontmatter.category}</SectionLabel>
+          {frontmatter.metric && (
+            <p className="font-mono text-metric font-medium text-cherry">{frontmatter.metric}</p>
+          )}
           <h1 className="heading-2">{frontmatter.title}</h1>
           <p className="text-ink-muted">{frontmatter.summary}</p>
           <p className="text-sm font-medium text-ink-muted">{metaLine}</p>
@@ -140,7 +143,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             className="card card-hover group mt-16 flex flex-col gap-2"
           >
             <span className="eyebrow">
-              Next case study &rarr;
+              Next result &rarr;
             </span>
             <span className="heading-3 transition-colors duration-150 group-hover:text-cherry">
               {next.frontmatter.title}
@@ -149,12 +152,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         )}
       </article>
 
-      <CtaBanner
-        title="Want results like these?"
-        body="Tell me about your team and what you're trying to move."
-        primary={{ label: "Start a conversation", href: "/contact" }}
-        secondary={{ label: "All case studies", href: "/work" }}
-      />
+      <ClosingCta />
     </>
   );
 }
