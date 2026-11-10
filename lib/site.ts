@@ -1,15 +1,9 @@
 // Site-wide links and contact details. Every booking CTA reads from here.
 
-// TODO: replace with Calendly / Google Calendar link
-export const BOOKING_URL = "/contact";
+export const BOOKING_URL = "https://calendar.app.google/Uae5wCd72xJkjeNG8";
 
-// TODO: add real email address
-export const CONTACT_EMAIL = "[EMAIL]";
+export const CONTACT_EMAIL = "maria.sanchez011602@gmail.com";
 
-// TODO: add WhatsApp link (e.g. https://wa.me/1XXXXXXXXXX)
-export const WHATSAPP_URL = "[WHATSAPP]";
-
-// TODO: add LinkedIn profile URL
-export const LINKEDIN_URL = "[LINKEDIN]";
+export const LINKEDIN_URL = "https://www.linkedin.com/in/maria-carolina-sanchez-otero/";
 
 export const BOOKING_CTA = "Book a free 15-min call";

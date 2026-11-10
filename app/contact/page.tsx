@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CONTACT_EMAIL, LINKEDIN_URL, WHATSAPP_URL } from "@/lib/site";
+import { CONTACT_EMAIL, LINKEDIN_URL } from "@/lib/site";
 import SectionLabel from "@/components/SectionLabel";
 import ContactForm from "./ContactForm";
 
@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 
 const CONTACT_OPTIONS = [
   { label: "Email", value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
-  { label: "WhatsApp", value: "Message me on WhatsApp", href: WHATSAPP_URL },
   { label: "LinkedIn", value: "Connect on LinkedIn", href: LINKEDIN_URL },
 ];
 
