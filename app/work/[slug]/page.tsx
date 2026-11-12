@@ -3,7 +3,10 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { getAllCaseStudies, getCaseStudy, getCaseStudySlugs } from "@/lib/case-studies";
+import { pageMetadata } from "@/lib/seo";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import ClosingCta from "@/components/ClosingCta";
+import JsonLd from "@/components/JsonLd";
 import SectionLabel from "@/components/SectionLabel";
 import Tag from "@/components/Tag";
 
@@ -15,10 +18,18 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   const slugs = getCaseStudySlugs();
   if (!slugs.includes(params.slug)) return {};
   const { frontmatter } = getCaseStudy(params.slug);
-  return {
-    title: frontmatter.title,
-    description: frontmatter.summary,
-  };
+  return pageMetadata({
+    title: frontmatter.seoTitle ?? frontmatter.title,
+    description: frontmatter.seoDescription ?? frontmatter.summary,
+    path: `/work/${params.slug}`,
+    type: "article",
+    image: {
+      path: `/work/${params.slug}/opengraph-image`,
+      alt: frontmatter.metric
+        ? `${frontmatter.metric}: ${frontmatter.title}`
+        : frontmatter.title,
+    },
+  });
 }
 
 const mdxComponents = {
@@ -85,8 +96,36 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
     .filter(Boolean)
     .join(", ");
 
+  const url = `${SITE_URL}/work/${params.slug}`;
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        headline: frontmatter.title,
+        description: frontmatter.seoDescription ?? frontmatter.summary,
+        url,
+        mainEntityOfPage: url,
+        image: `${url}/opengraph-image`,
+        inLanguage: "en",
+        author: { "@id": `${SITE_URL}/#maria`, "@type": "Person", name: SITE_NAME },
+        publisher: { "@id": `${SITE_URL}/#business` },
+        keywords: frontmatter.tags?.join(", "),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Results", item: `${SITE_URL}/work` },
+          { "@type": "ListItem", position: 3, name: frontmatter.title, item: url },
+        ],
+      },
+    ],
+  };
+
   return (
     <>
+      <JsonLd data={articleJsonLd} />
       <article className="container-page max-w-3xl py-16 lg:py-24">
         <Link href="/work" className="link text-sm">
           &larr; All results

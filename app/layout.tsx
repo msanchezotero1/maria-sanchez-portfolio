@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
+import JsonLd from "@/components/JsonLd";
+import { CONTACT_EMAIL, LINKEDIN_URL, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 // Fonts are self-hosted from app/fonts (latin subset, from Fontsource, SIL OFL)
@@ -39,19 +41,21 @@ const plexMono = localFont({
 
 const SITE_TITLE = "Maria Sanchez Otero | More paying clients for small businesses";
 const SITE_DESCRIPTION =
-  "Organic video, Meta ads, sales funnels and AI automation that turn attention into paying clients, with a monthly ROI report that shows what every dollar brought back. EN / ES.";
+  "Organic video, Meta ads, sales funnels and AI automation that turn attention into paying clients, with a monthly ROI report on what every dollar brought back.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://maria-sanchez-portfolio.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_TITLE,
-    template: "%s | Maria Sanchez Otero",
+    template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
+  alternates: { canonical: "/" },
   openGraph: {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    siteName: "Maria Sanchez Otero",
+    url: "/",
+    siteName: SITE_NAME,
     type: "website",
     locale: "en_US",
   },
@@ -60,6 +64,58 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
   },
+};
+
+// Site-wide structured data: who Maria is and what the business does.
+// Helps Google and AI assistants connect the site, the LinkedIn profile
+// and the services into one entity.
+const SITE_JSON_LD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#maria`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      image: `${SITE_URL}/headshot-navy.jpg`,
+      jobTitle: "Growth marketer for small businesses",
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: "Babson College",
+      },
+      knowsLanguage: ["en", "es"],
+      knowsAbout: [
+        "Meta ads",
+        "Short-form video marketing",
+        "Sales funnels",
+        "AI automation",
+        "Marketing analytics",
+        "CRM",
+      ],
+      sameAs: [LINKEDIN_URL],
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${SITE_URL}/#business`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      description: SITE_DESCRIPTION,
+      image: `${SITE_URL}/opengraph-image`,
+      founder: { "@id": `${SITE_URL}/#maria` },
+      areaServed: { "@type": "Country", name: "United States" },
+      availableLanguage: ["English", "Spanish"],
+      email: CONTACT_EMAIL,
+      sameAs: [LINKEDIN_URL],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      inLanguage: "en",
+      publisher: { "@id": `${SITE_URL}/#business` },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -76,6 +132,7 @@ export default function RootLayout({
           script tag site-wide. No other changes needed here.
         */}
         <Analytics />
+        <JsonLd data={SITE_JSON_LD} />
 
         <Nav />
         <main className="flex-1">{children}</main>
