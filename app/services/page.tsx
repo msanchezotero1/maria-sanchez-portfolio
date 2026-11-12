@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { BOOKING_CTA, BOOKING_URL } from "@/lib/site";
 import Button from "@/components/Button";
 import ClosingCta from "@/components/ClosingCta";
 import SectionLabel from "@/components/SectionLabel";
 import Tag from "@/components/Tag";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Services",
   description:
     "Organic video, Meta ads, sales funnels and AI follow-up in one connected system, with a monthly ROI report. Plans from $2,000/month.",
-};
+  path: "/services",
+});
 
 const GROWTH_SYSTEM_INCLUDES = [
   "Organic video strategy, scripts and direction (you record, I edit and publish)",

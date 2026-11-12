@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import ClosingCta from "@/components/ClosingCta";
 import SectionLabel from "@/components/SectionLabel";
 import StudioGallery from "./StudioGallery";
 import { studioPosts, studioVideos } from "@/lib/studio";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Content",
   description:
     "Short-form video and social content built to work twice: as organic posts and as Meta ads. Created in English and Spanish.",
-};
+  path: "/studio",
+});
 
 const HOW_I_RAN_IT = [
   {

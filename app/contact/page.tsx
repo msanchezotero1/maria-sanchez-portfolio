@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { CONTACT_EMAIL, LINKEDIN_URL } from "@/lib/site";
 import SectionLabel from "@/components/SectionLabel";
 import ContactForm from "./ContactForm";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description:
     "Book a free 15-minute call with Maria Sanchez Otero. Growth marketing for small businesses, in English and Spanish.",
-};
+  path: "/contact",
+});
 
 const CONTACT_OPTIONS = [
   { label: "Email", value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },

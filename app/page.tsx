@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { getAllCaseStudies } from "@/lib/case-studies";
 import { BOOKING_CTA, BOOKING_URL } from "@/lib/site";
 import Button, { TextLink } from "@/components/Button";
@@ -7,11 +8,13 @@ import ClosingCta from "@/components/ClosingCta";
 import Headshot from "@/components/Headshot";
 import SectionLabel from "@/components/SectionLabel";
 
-export const metadata: Metadata = {
-  title: {
-    absolute: "Maria Sanchez Otero | More paying clients for small businesses",
-  },
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Maria Sanchez Otero | More paying clients for small businesses",
+  absoluteTitle: true,
+  description:
+    "Organic video, Meta ads, sales funnels and AI automation that turn attention into paying clients, with a monthly ROI report on what every dollar brought back.",
+  path: "/",
+});
 
 // `accent` renders the figure in cherry. Keep it on the single headline result.
 const PROOF_POINTS = [

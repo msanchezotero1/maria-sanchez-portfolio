@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { BOOKING_CTA, BOOKING_URL } from "@/lib/site";
 import Button from "@/components/Button";
 import ClosingCta from "@/components/ClosingCta";
 import Headshot from "@/components/Headshot";
 import SectionLabel from "@/components/SectionLabel";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description:
-    "Maria Sanchez Otero helps small businesses get more paying clients from social media, and proves it with numbers.",
-};
+    "Maria Sanchez Otero helps small businesses get more paying clients from social media and AI automation, and proves it with numbers. MS, Babson College.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

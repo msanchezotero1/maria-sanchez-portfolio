@@ -25,6 +25,13 @@ export type CaseStudyFrontmatter = {
   order?: number;
   /** Optional thumbnail shown on the right of the case study row. Omit until a real image exists. */
   thumbnail?: string;
+  /**
+   * Optional shorter title for Google and social previews. The site name is
+   * appended, so keep it to about 40 characters. Falls back to `title`.
+   */
+  seoTitle?: string;
+  /** Optional 140–160 character description for Google. Falls back to `summary`. */
+  seoDescription?: string;
 };
 
 export type CaseStudy = {

@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { getAllCaseStudies } from "@/lib/case-studies";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import ClosingCta from "@/components/ClosingCta";
 import SectionLabel from "@/components/SectionLabel";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Results",
-  description: "Real campaigns, real numbers. Client names kept confidential where requested.",
-};
+  description:
+    "Case studies in Meta ads, AI automation and marketing analytics, from a $200 to $15 cost per lead to hours of manual work automated away. Real numbers.",
+  path: "/work",
+});
 
 export default function WorkPage() {
   const caseStudies = getAllCaseStudies();
