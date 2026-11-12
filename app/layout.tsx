@@ -64,6 +64,10 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
   },
+  // Google Search Console ownership check (URL-prefix property).
+  verification: {
+    google: "e518YA3LQH_wqEbjeBdu4sqZsI18J1TmDugnRCTPDC4",
+  },
 };
 
 // Site-wide structured data: who Maria is and what the business does.
